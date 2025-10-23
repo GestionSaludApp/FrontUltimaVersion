@@ -1,8 +1,8 @@
-<div class="ventana">
+<div class="perfil-container">
 
-  <!-- Selector de perfil -->
+  <!-- Cambiar perfil -->
   <section class="cambiar-perfil">
-    <label for="perfil">Cambiar perfil</label>
+    <h2>Cambiar perfil</h2>
     <div class="selector">
       <select id="perfil" [(ngModel)]="perfilSeleccionado">
         <option [ngValue]="null">Seleccionar perfil</option>
@@ -14,23 +14,24 @@
     </div>
   </section>
 
-  <!--  Info del perfil activo -->
+  <!-- Perfil activo -->
   <section *ngIf="perfilActivo" class="perfil-card">
-    <h2>Perfil activo: {{ perfilActivo.alias }}</h2>
+    <h3>Perfil activo: {{ perfilActivo.alias }}</h3>
 
-    <div class="perfil-foto">
-      <img [src]="avatar()" alt="Foto de perfil">
+    <div class="perfil-info">
+      <div class="perfil-foto">
+        <img [src]="avatar()" alt="Foto de perfil">
+      </div>
+
+      <div class="perfil-datos">
+        <p><strong>Nombre:</strong> {{ perfilActivo.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ perfilActivo.apellido }}</p>
+        <p><strong>DNI:</strong> {{ perfilActivo.dni }}</p>
+        <p><strong>Fecha de nacimiento:</strong> {{ perfilActivo.fechaNacimiento.slice(0,-7) }}</p>
+        <p><strong>Rol:</strong> {{ perfilActivo.rol }}</p>
+      </div>
     </div>
 
-    <div class="perfil-datos">
-      <p><strong>Nombre:</strong> {{ perfilActivo.nombre }}</p>
-      <p><strong>Apellido:</strong> {{ perfilActivo.apellido }}</p>
-      <p><strong>DNI:</strong> {{ perfilActivo.dni }}</p>
-      <p><strong>Fecha de nacimiento:</strong> {{ perfilActivo.fechaNacimiento.slice(0,-7) }}</p>
-      <p><strong>Rol:</strong> {{ perfilActivo.rol }}</p>
-    </div>
-
-    <!--  Info extra si es profesional -->
     <div *ngIf="perfilActivo.rol === 'profesional'" class="perfil-profesional">
       <p><strong>Especialidad:</strong> {{ especialidad() }}</p>
       <p><strong>Disponibilidad horaria:</strong></p>
@@ -44,7 +45,7 @@
     </div>
   </section>
 
-  <!--  Nuevo perfil -->
+  <!-- Nuevo perfil -->
   <section class="nuevo-perfil">
     <app-nuevo-perfil></app-nuevo-perfil>
   </section>
