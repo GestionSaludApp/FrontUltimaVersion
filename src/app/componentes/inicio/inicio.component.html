@@ -1,0 +1,126 @@
+<div *ngIf="perfilActivo" class="subbarra-tabs">
+  <!-- Botón común para todos -->
+  <button 
+    name="botonDatosPersonales" 
+    (click)="irDatosPersonales()" 
+    [class.active]="activeTab==='datosPersonales'">Datos personales</button>
+
+  <!-- Botones solo para pacientes -->
+  <ng-container *ngIf="perfilActivo.rol==='paciente'">
+    <button 
+      name="botonTurnosDisponibles" 
+      (click)="irTurnosDisponibles()" 
+      [class.active]="activeTab==='turnosDisponibles'">Nuevo turno</button>
+  </ng-container>
+
+  <!-- Botones solo para profesionales -->
+  <ng-container *ngIf="perfilActivo.rol==='profesional'">
+    <button 
+      name="botonTurnosAtencion" 
+      (click)="irTurnosAtencion()" 
+      [class.active]="activeTab==='turnosAtencion'">Ver turnos</button>
+  </ng-container>
+
+  <!-- Botones solo para administradores -->
+  <ng-container *ngIf="perfilActivo.rol==='administrador'">
+    <button 
+      name="botonClientes" 
+      (click)="irClientes()" 
+      [class.active]="activeTab==='clientes'">Clientes</button>
+
+    <button 
+      name="botonPersonal" 
+      (click)="irPersonal()" 
+      [class.active]="activeTab==='personal'">Personal</button>
+
+    <button 
+      name="botonHabilitaciones" 
+      (click)="irHabilitaciones()" 
+      [class.active]="activeTab==='habilitaciones'">Habilitaciones</button>
+  </ng-container>
+</div>
+
+
+<section class="hero-img">
+    <img src="recepcion.jpg" alt="Recepción" class="hero-img-full" />
+    <div class="overlay">
+      <h1>SALUD</h1>
+      <p>Tu salud, nuestra prioridad. Gestioná tus turnos en un solo lugar.</p>
+      <a routerLink="/conocermas" class="btn btn-primary btn-lg hero-btn">Conocé más</a>
+    </div>
+</section>
+  
+<div class="container py-5">
+    <!-- Sección 1: Gestión de turnos -->
+    <div class="row align-items-center mb-5 p-4 rounded-4 shadow-sm bg-light">
+      <div class="col-md-6">
+        <h2 class="fw-bold mb-3 text-primary">Gestión de turnos fácil y rápido</h2>
+        <p class="text-muted">Reservá, modificá o cancelá tus turnos en solo unos clics, sin llamadas ni esperas.</p>
+        <ul class="list-unstyled mt-3 text-muted">
+          <li><i class="bi bi-check-circle-fill text-success me-2"></i> Turnos online 24/7</li>
+          <li><i class="bi bi-check-circle-fill text-success me-2"></i> Cancelación rápida</li>
+          <li><i class="bi bi-check-circle-fill text-success me-2"></i> Recordatorios automáticos</li>
+        </ul>
+        <a class="btn btn-primary mt-3 px-4 py-2 shadow-sm rounded-pill" routerLink="/ingreso">
+          📅 Reservar Turno
+        </a>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="tabletmedico.jpg" alt="Tablet y médico" class="img-fluid rounded-4 shadow-sm img-reducida">
+      </div>
+    </div>
+  
+    <!-- Sección 2: Sistema confiable -->
+    <div class="row align-items-center flex-md-row-reverse mb-5 p-4 rounded-4 shadow-sm bg-white">
+      <div class="col-md-6">
+        <h2 class="fw-bold mb-3 text-secondary">Un sistema confiable para pacientes y médicos</h2>
+        <p class="text-muted">Garantizamos un proceso seguro y eficiente para cada gestión.</p>
+        <ul class="list-unstyled mt-3 text-muted">
+          <li><i class="bi bi-shield-check text-primary me-2"></i> Datos protegidos</li>
+          <li><i class="bi bi-hospital text-danger me-2"></i> Prestadores en todo el país</li>
+          <li><i class="bi bi-people-fill text-warning me-2"></i> Atención personalizada</li>
+        </ul>
+        <a class="btn btn-outline-secondary mt-3 px-4 py-2 shadow-sm rounded-pill" routerLink="/conocermas">
+          ℹ️ Conocé más
+        </a>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="pacientes.jpg" alt="Doctor con paciente" class="img-fluid rounded-4 shadow-sm img-reducida">
+      </div>
+    </div>
+</div>
+  
+  
+<div class="container py-4">
+    <h2 class="fw-bold text-center mb-4">Tu Guía para encontrar Clínicas y Beneficios</h2>
+    
+    <div class="row text-center g-4">
+      <div class="col-md-4">
+        <div class="card shadow-lg border-0 rounded-4 guide-card">
+          <img src="app.jpg" class="card-img-top img-fluid rounded-top-4" alt="App médica">
+          <div class="card-body">
+            <h5 class="card-title fw-semibold">Descubrí nuestra app</h5>
+            <p class="card-text">Gestión médica desde cualquier lugar.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-lg border-0 rounded-4 guide-card">
+          <img src="mapa.png" class="card-img-top img-fluid rounded-top-4" alt="Mapa de clínicas">
+          <div class="card-body">
+            <h5 class="card-title fw-semibold">Encontrá la clínica más cercana</h5>
+            <p class="card-text">Atención médica en múltiples ubicaciones.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-lg border-0 rounded-4 guide-card">
+          <img src="beneficios.jpg" class="card-img-top img-fluid rounded-top-4" alt="Beneficiarios">
+          <div class="card-body">
+            <h5 class="card-title fw-semibold">Información Beneficiarios</h5>
+            <p class="card-text">¿Quiénes son? ¿Cómo me afilio?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>  

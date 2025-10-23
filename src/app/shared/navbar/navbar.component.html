@@ -1,0 +1,14 @@
+<nav class="navbar bg-primary" data-bs-theme="dark">
+   <a class="nav-link active" aria-current="page" routerLink="/inicio">Principal</a>
+   <a class="nav-link" routerLink="/gestiononline">Gestiones Online</a>
+   <a class="nav-link" routerLink="/seccionales">Cartilla Médica</a>
+   <a class="nav-link" routerLink="/especialidades">Especialidades</a>
+   <a class="nav-link" routerLink="/contactenos">Contacto</a>
+ 
+   <!-- Muestra un botón u otro según el estado de sesión -->
+   <a *ngIf="!sesionActiva" class="nav-link" class="login-btn" routerLink="/ingreso">Ingresar</a>
+
+   <ng-container *ngIf="sesionActiva">
+      <button class="logout-btn" (click)="cerrarSesion()">Cerrar sesión</button>
+   </ng-container>
+ </nav>

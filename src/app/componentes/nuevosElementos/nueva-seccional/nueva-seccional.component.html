@@ -1,0 +1,86 @@
+<div class="VentanaNivel0">
+  <h2>Nueva Seccional</h2>
+
+  <form #formSeccional="ngForm" (ngSubmit)="guardarSeccional()">
+
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        class="form-control"
+        [(ngModel)]="seccional.nombre"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="direccion">Dirección:</label>
+      <input
+        type="text"
+        id="direccion"
+        name="direccion"
+        class="form-control"
+        [(ngModel)]="seccional.direccion"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="ciudad">Ciudad:</label>
+      <input
+        type="text"
+        id="ciudad"
+        name="ciudad"
+        class="form-control"
+        [(ngModel)]="seccional.ciudad"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="provincia">Provincia:</label>
+      <input
+        type="text"
+        id="provincia"
+        name="provincia"
+        class="form-control"
+        [(ngModel)]="seccional.provincia"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="telefono">Teléfono:</label>
+      <input
+        type="text"
+        id="telefono"
+        name="telefono"
+        class="form-control"
+        [(ngModel)]="seccional.telefono"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        class="form-control"
+        [(ngModel)]="seccional.email"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <input id="imagen" type="file" (change)="onFileSelected($event)" accept="image/*">
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="formSeccional.invalid">
+      Guardar
+    </button>
+  </form>
+</div>

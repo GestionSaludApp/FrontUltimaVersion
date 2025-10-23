@@ -1,0 +1,30 @@
+<div class="VentanaNivel0">
+
+    <br>
+    
+    <div>
+        <label for="email">Email: </label>
+        <input id="email" [(ngModel)]="emailIngresado" (ngModelChange)="verificarEmail()" [placeholder]="'Escriba su email'"/>
+    </div>
+
+    <div>
+        <label for="password">Contraseña: </label>
+        <input id="password" [(ngModel)]="passwordIngresado" [placeholder]="'Escriba su contraseña'"/>
+    </div>
+
+    <div>
+        <label for="codigo">Codigo: </label>
+        <input id="codigo" [(ngModel)]="codigoIngresado" [placeholder]="'Escriba el código'"/>
+    </div>
+
+    <div>
+        <p class="advertencia">{{advertenciaEmail}}</p>
+        <button (click)="activarUsuario()">
+            <i class="fa-solid fa-circle-check"></i>
+        </button>
+        Activar
+    </div>
+
+    <p>{{mensaje}}</p>
+
+</div>

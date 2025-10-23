@@ -1,0 +1,62 @@
+<div class="VentanaNivel0 reporte-formulario">
+  <h2>Nuevo Reporte</h2>
+
+  <form (ngSubmit)="guardarReporte()" #reporteForm="ngForm" class="form-container">
+
+    <!-- ID Paciente -->
+    <div class="form-group">
+      <label for="idPaciente">ID Paciente:</label>
+      <input
+        type="number"
+        id="idPaciente"
+        [(ngModel)]="nuevoReporte.idPerfilPaciente"
+        name="idPerfilPaciente"
+        required
+        placeholder="Ingrese el ID del paciente"
+      >
+    </div>
+
+    <!-- ID Profesional -->
+    <div class="form-group">
+      <label for="idProfesional">ID Profesional:</label>
+      <input
+        type="number"
+        id="idProfesional"
+        [(ngModel)]="nuevoReporte.idPerfilProfesional"
+        name="idPerfilProfesional"
+        required
+        placeholder="Ingrese el ID del profesional"
+      >
+    </div>
+
+    <!-- Informe -->
+    <div class="form-group">
+      <label for="informe">Informe:</label>
+      <textarea
+        id="informe"
+        [(ngModel)]="nuevoReporte.informe"
+        name="informe"
+        required
+        placeholder="Escriba el informe aquí"
+        rows="5"
+      ></textarea>
+    </div>
+
+    <!-- Imagen opcional -->
+    <div class="form-group">
+      <label for="imagen">Imagen (opcional):</label>
+      <input id="imagen" type="file" (change)="onFileSelected($event)" accept="image/*">
+  </div>
+
+    <!-- Botones -->
+    <div class="botones-form">
+      <button type="submit" [disabled]="reporteForm.invalid" class="btn-guardar">
+        Guardar
+      </button>
+      <button type="button" (click)="cerrar.emit()" class="btn-cancelar">
+        Cancelar
+      </button>
+    </div>
+
+  </form>
+</div>

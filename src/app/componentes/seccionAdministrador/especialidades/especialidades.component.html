@@ -1,0 +1,48 @@
+<div class="especialidades-container">
+  <h3 class="titulo">Lista de Especialidades</h3>
+
+  <div class="tarjetas">
+    <div *ngFor="let especialidad of especialidadesLocal; let i = index" class="tarjeta">
+      <!-- Imagen ahora apunta directamente al campo 'imagen' -->
+      <img [src]="especialidad.imagen" alt="Logo de especialidad" class="imagen-especialidad">
+      
+      <div class="info-especialidad">
+        <h4>{{ especialidad.nombre }}</h4>
+        <p *ngIf="perfilActivo?.rol === 'administrador'">
+          Duración: {{ especialidad.duracion }} minutos
+        </p>
+      </div>
+
+      <div *ngIf="perfilActivo?.rol === 'administrador'" class="botones-admin">
+        <button class="btn-editar" (click)="mostrarPanelEditarEspecialidad(i)">Editar</button>
+        <button class="btn-eliminar" (click)="eliminarEspecialidad(especialidad)">Eliminar</button>
+
+        <div *ngIf="mostrarPanelEditar[i]" class="editar-panel">
+          <label for="nombre-{{i}}">Nombre:</label>
+          <input type="text" id="nombre-{{i}}" [(ngModel)]="especialidadEditada.nombre" required>
+
+          <label for="duracion-{{i}}">Duración (minutos):</label>
+          <input type="number" id="duracion-{{i}}" [(ngModel)]="especialidadEditada.duracion" required min="1">
+
+          <div class="botones-panel">
+            <button class="btn-guardar" (click)="editarEspecialidad()">Guardar</button>
+            <button class="btn-cancelar" (click)="cerrarPaneles()">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agregar nueva especialidad -->
+  <div *ngIf="perfilActivo?.rol === 'administrador'" class="agregar-especialidad">
+    <button class="btn-agregar" (click)="mostrarPanelNuevaEspecialidad()">Agregar Especialidad</button>
+    <div *ngIf="mostrarPanelNueva">
+      <app-nueva-especialidad></app-nueva-especialidad>
+    </div>
+  </div>
+
+  <!-- Exportar CSV -->
+  <div class="exportar">
+    <button class="btn-exportar" (click)="exportarCSV()">Exportar</button>
+  </div>
+</div>

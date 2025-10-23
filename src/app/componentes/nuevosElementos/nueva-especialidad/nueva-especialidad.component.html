@@ -1,0 +1,39 @@
+<div class="VentanaNivel0">
+  <h2>Nueva Especialidad</h2>
+
+  <form #formEspecialidad="ngForm" (ngSubmit)="guardarEspecialidad()">
+    
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        class="form-control"
+        [(ngModel)]="especialidad.nombre"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="duracion">Duración (minutos):</label>
+      <input
+        type="number"
+        id="duracion"
+        name="duracion"
+        class="form-control"
+        [(ngModel)]="especialidad.duracion"
+        required
+        min="1"
+      />
+    </div>
+
+    <div class="form-group">
+      <input id="imagen" type="file" (change)="onFileSelected($event)" accept="image/*">
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="formEspecialidad.invalid">
+      Guardar
+    </button>
+  </form>
+</div>

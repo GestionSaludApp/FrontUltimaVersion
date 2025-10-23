@@ -1,0 +1,36 @@
+.hero-section {
+  background: url('/recepcionn.jpg') center/cover no-repeat;
+  min-height: 300px;
+  padding: 4rem 1rem;
+  background-attachment: fixed;
+}
+
+.card {
+  border: none;
+  border-radius: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.step-card {
+  background: white;
+  border-radius: 0.75rem;
+  position: relative;
+}
+
+.step-number {
+  display: inline-block;
+  background: #0d6efd;
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+} 
+
+.container{
+  color: #101010;
+}
