@@ -1,6 +1,11 @@
-<div class="especialidades-container">
-  <h3 class="titulo">Lista de Especialidades</h3>
+<section class="mt-5 text-center position-relative">
+  <h3 class="fw-bold text-dark mb-4 position-relative d-inline-block" style="font-size: 2rem;">
+    Lista de Especialidades
+    <span class="titulo-sections"></span>
+  </h3>
+</section>
 
+<div class="especialidades-container">
   <div class="tarjetas">
     <div *ngFor="let especialidad of especialidadesLocal; let i = index" class="tarjeta">
       <!-- Imagen ahora apunta directamente al campo 'imagen' -->

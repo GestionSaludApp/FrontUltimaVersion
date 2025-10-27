@@ -34,10 +34,14 @@
     </div>
 </div>
 -->
+<section class="mt-5 text-center position-relative">
+  <h3 class="fw-bold text-dark mb-4 position-relative d-inline-block" style="font-size: 2rem;">
+    Lista de Seccionales
+    <span class="titulo-sections"></span>
+  </h3>
+</section>
 
 <div class="VentanaNivel0">
-  <p>Lista de seccionales</p>
-
   <div class="seccionales-grid" *ngIf="seccionalesLocal.length > 0">
     <div *ngFor="let seccional of seccionalesLocal; let i = index" class="VentanaNivel1 seccional-card">
       

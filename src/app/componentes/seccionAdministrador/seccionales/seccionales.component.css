@@ -1,3 +1,19 @@
+.titulo-sections {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background-color: #007bff;
+  border-radius: 2px;
+}
+
+/* Separación del navbar */
+section {
+  margin-top: 80px; /* podés ajustar este valor según tu navbar */
+} 
+
 /* Contenedor principal */
 .VentanaNivel0 {
   padding: 20px;
