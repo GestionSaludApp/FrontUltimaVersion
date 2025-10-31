@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 import { TitleCasePipe } from '@angular/common';
 import Swal from 'sweetalert2';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-ver-turnos-disponibles',
@@ -35,7 +36,8 @@ export class VerTurnosDisponiblesComponent implements OnInit {
 
   constructor(
     private baseDeDatos: BasededatosService, 
-    private usuarioActual: UsuarioActivoService
+    private usuarioActual: UsuarioActivoService,
+    private http: HttpClient
   ) {}
   
   ngOnInit(): void {
@@ -91,7 +93,19 @@ export class VerTurnosDisponiblesComponent implements OnInit {
         // Mover turno de disponibles a activos
         this.turnosActivos.push(turno);
         this.turnosDisponibles = this.turnosDisponibles.filter(t => t.idTurno !== turno.idTurno);
-    
+
+        // ✅ Enviar correo al confirmar turno
+        const params = {
+          email: this.usuarioActual.usuario?.email, // o el correo del paciente
+          asunto: 'Confirmación de turno',
+          mensaje: `Tu turno fue confirmado para ${turno.especialidad()} el día ${this.diasLocal[turno.diaSemana]} a las ${this.leerMinutos(turno.horaInicio)}.`
+        };
+
+        this.http.post('http://localhost:3000/envio', params).subscribe({
+          next: resp => console.log('Correo enviado:', resp),
+          error: err => console.error('Error al enviar correo:', err)
+        });
+
         Swal.fire({
           title: '¡Turno confirmado!',
           text: 'Tu turno fue reservado con éxito.',
