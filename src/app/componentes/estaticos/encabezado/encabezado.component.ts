@@ -4,11 +4,12 @@ import { Subscription } from 'rxjs';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 import { Perfil } from '../../../clases/perfil';
 import { NavbarComponent } from "../../../shared/navbar/navbar.component";
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-encabezado',
   standalone: true,
-  imports: [NavbarComponent],
+  imports: [NgIf, NavbarComponent],
   templateUrl: './encabezado.component.html',
   styleUrl: './encabezado.component.css'
 })
@@ -38,5 +39,38 @@ export class EncabezadoComponent implements OnInit{
   irRegistro(){this.navegar.irRegistro();}
   irEspecialidades(){this.navegar.irEspecialidades();}
   irSeccionales(){this.navegar.irSeccionales();}
+
+  //subBarra
+  activeTab: string = 'datosPersonales';
+
+  irDatosPersonales() {
+    this.activeTab = 'datosPersonales';
+    this.navegar.irDatosPersonales();
+  }
+
+  irTurnosDisponibles() {
+    this.activeTab = 'turnosDisponibles';
+    this.navegar.irTurnosDisponibles();
+  }
+
+  irTurnosAtencion(){
+    this.activeTab = 'turnosAtencion';
+    this.navegar.irTurnosAtencion();
+  }
+
+  irClientes() {
+    this.activeTab = 'clientes';
+    this.navegar.irClientes();  
+  }
+
+  irPersonal() {
+    this.activeTab = 'personal';
+    this.navegar.irPersonal();
+  }
+
+  irHabilitaciones() {
+    this.activeTab = 'habilitaciones';
+    this.navegar.irHabilitaciones();
+  }
 
 }

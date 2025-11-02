@@ -1,11 +1,10 @@
+<!--
 <div *ngIf="perfilActivo" class="subbarra-tabs">
-  <!-- Botón común para todos -->
   <button 
     name="botonDatosPersonales" 
     (click)="irDatosPersonales()" 
     [class.active]="activeTab==='datosPersonales'">Datos personales</button>
 
-  <!-- Botones solo para pacientes -->
   <ng-container *ngIf="perfilActivo.rol==='paciente'">
     <button 
       name="botonTurnosDisponibles" 
@@ -13,7 +12,6 @@
       [class.active]="activeTab==='turnosDisponibles'">Nuevo turno</button>
   </ng-container>
 
-  <!-- Botones solo para profesionales -->
   <ng-container *ngIf="perfilActivo.rol==='profesional'">
     <button 
       name="botonTurnosAtencion" 
@@ -21,7 +19,6 @@
       [class.active]="activeTab==='turnosAtencion'">Ver turnos</button>
   </ng-container>
 
-  <!-- Botones solo para administradores -->
   <ng-container *ngIf="perfilActivo.rol==='administrador'">
     <button 
       name="botonClientes" 
@@ -39,7 +36,7 @@
       [class.active]="activeTab==='habilitaciones'">Habilitaciones</button>
   </ng-container>
 </div>
-
+-->
 
 <section class="hero-img">
     <img src="recepcion.jpg" alt="Recepción" class="hero-img-full" />
