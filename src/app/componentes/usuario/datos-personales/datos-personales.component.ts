@@ -24,7 +24,7 @@ export class DatosPersonalesComponent implements OnInit{
   especialidadesLocal: Especialidad[] = [];
   seccionalesLocal: Seccional[] = [];
   dias = dias;
-  avatarGenerico = "v1756774763/perfiles/cthtfwco3ir2bwwpbyih.png"
+  avatarGenerico = "v1762125245/generico_bwuvcy.png"
 
   private perfilSubscripcion: Subscription | null = null;
   perfilActivo: Perfil | null = null;

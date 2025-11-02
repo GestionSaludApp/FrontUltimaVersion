@@ -24,13 +24,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./especialidades.component.css']
 })
 export class EspecialidadesComponent implements OnInit, OnDestroy {
-  // Ahora definimos las especialidades con la ruta completa de la imagen
-  especialidadesLocal: Especialidad[] = [
-    { idEspecialidad: 1, nombre: 'Cardiología', duracion: 30, imagen: 'public/especialidades/cardiologia.jpg' },
-    { idEspecialidad: 2, nombre: 'Dermatología', duracion: 20, imagen: 'public/especialidades/dermatologia.jpg' },
-    { idEspecialidad: 3, nombre: 'Pediatría', duracion: 25, imagen: 'public/especialidades/pediatria.jpg' },
-    // agregá más especialidades si querés
-  ];
+  especialidadesLocal: Especialidad[] = [];
   prefijoImagen = prefijoImagen;
   private perfilSubscripcion: Subscription | null = null;
   perfilActivo: Perfil | null = null;
@@ -48,55 +42,11 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
     });
     this.baseDeDatos.buscarEspecialidades(() => {
        this.especialidadesLocal = especialidades.filter(esp => esp.idEspecialidad !== 0).map(esp => {
-        let imagen = '';
-
-        switch (esp.nombre.trim()) {
-          case 'Cardiología':
-            imagen = '/especialidades/cardiologia.png';
-            break;
-          case 'Clínica Médica':
-            imagen = '/especialidades/clinicaMedica.png';
-            break;
-          case 'Dermatología':
-            imagen = '/especialidades/dermatologia.png';
-            break;
-          case 'Endocrinología':
-            imagen = '/especialidades/endocrinologia.png';
-            break;
-          case 'Ginecología':
-            imagen = '/especialidades/ginecologia.jpg';
-            break;
-          case 'Neurología':
-            imagen = '/especialidades/neurologia.png';
-            break;
-          case 'Oftalmologia':
-            imagen = '/especialidades/oftalmologia.png';
-            break;
-          case 'Oncología':
-            imagen = '/especialidades/oncologia.png';
-            break;
-          case 'Otorrinolaringología':
-            imagen = '/especialidades/otorrinolaringologia.png';
-            break;
-          case 'Pediatría':
-            imagen = '/especialidades/pediatria.jpg';
-            break;
-          case 'Psiquiatría':
-            imagen = '/especialidades/psiquiatria.png';
-            break;
-          case 'Traumatología':
-            imagen = '/especialidades/traumatologia.jpg';
-            break;
-          default:
-            imagen = '/especialidades/default.jpg';
-      }
-        console.log(`Especialidad: "${esp.nombre}" → Imagen: "${imagen}"`);
-        return { ...esp, imagen };
+        return { ...esp};
       });
       
       this.mostrarPanelEditar = this.especialidadesLocal.map(() => false);
     });
-    console.log('Especialidades cargadas:', this.especialidadesLocal);
   }
 
   ngOnDestroy(): void {
@@ -163,5 +113,9 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
   cerrarPaneles() {
     this.mostrarPanelNueva = false;
     this.mostrarPanelEditar = this.mostrarPanelEditar.map(() => false);
+  }
+
+  imagen(index: number): string{
+      return this.prefijoImagen+this.especialidadesLocal[index].imagen;
   }
 }

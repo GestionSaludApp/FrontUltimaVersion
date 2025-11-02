@@ -1,39 +1,3 @@
-<!--
-<div class="VentanaNivel0">
-
-    <p>Lista de seccionales</p>
-
-    <div *ngFor="let seccional of seccionalesLocal" class="VentanaNivel1">
-        {{seccional.nombre}} - {{seccional.direccion}} - {{seccional.ciudad}} - {{seccional.provincia}}
-        {{seccional.telefono}} - {{seccional.email}}
-
-        <div class="VentanaNivel1">
-            <img [src]="this.prefijoImagen+seccional.imagen" alt="Logo de seccional" width="150" height="150">
-        </div>
-
-        <ng-container *ngIf="perfilActivo">
-            <div *ngIf="perfilActivo.rol==='administrador'">
-                {{seccional.nombre}} *placeholder*
-                <button name="botonEditarSeccional" (click)="proxy()">Editar seccional</button>
-                <button name="botonEliminarSeccional" (click)="eliminarSeccional(seccional)">Eliminar seccional</button>
-            </div>
-    </ng-container>
-    </div>
-
-    <ng-container *ngIf="perfilActivo">
-        <div *ngIf="perfilActivo.rol==='administrador'">
-            <button name="botonAgregarSeccional" (click)="mostrarPanelNuevaSeccional()">Agregar seccional</button>
-            <div *ngIf="mostrarPanelNueva">
-                <app-nueva-seccional></app-nueva-seccional>
-            </div>
-        </div>
-    </ng-container>
-
-    <div class="VentanaNivel0">
-        <button name="exportarExcel" (click)="exportarCSV()">Exportar</button>
-    </div>
-</div>
--->
 <section class="mt-5 text-center position-relative">
   <h3 class="fw-bold text-dark mb-4 position-relative d-inline-block" style="font-size: 2rem;">
     Lista de Seccionales
@@ -50,7 +14,7 @@
       </div>
 
       <div class="seccional-imagen">
-        <img [src]="seccional.imagen" alt="Logo de seccional" width="150" height="150">
+        <img [src]="imagen(i)" alt="Logo de seccional" width="150" height="150">
       </div>
 
       

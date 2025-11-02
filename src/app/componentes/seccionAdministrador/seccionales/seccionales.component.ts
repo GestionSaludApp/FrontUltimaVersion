@@ -19,72 +19,8 @@ import Swal from 'sweetalert2';
   styleUrl: './seccionales.component.css'
 })
 
-/*
-export class SeccionalesComponent implements OnInit{
-  seccionalesLocal: Seccional[] = [];
-  prefijoImagen = prefijoImagen;
-  private perfilSubscripcion: Subscription | null = null;
-  perfilActivo: Perfil | null = null;
-  
-  mostrarPanelNueva: boolean = false;
-  seccionalEditada: Seccional = new Seccional();
-  mostrarPanelEditar: boolean[] = [];
-
-  constructor(private usuarioActivo: UsuarioActivoService, private baseDeDatos: BasededatosService) {}
-
-  ngOnInit(): void {
-    this.perfilSubscripcion = this.usuarioActivo.perfilObservable$.subscribe(perfil => {
-      this.perfilActivo = perfil;
-    });
-    this.baseDeDatos.buscarSeccionales(() => {
-      this.seccionalesLocal = seccionales.slice(1);
-    });
-  }
-
-  ngOnDestroy(): void {
-    if (this.perfilSubscripcion) {
-      this.perfilSubscripcion.unsubscribe();
-    }
-  }
-
-  mostrarPanelNuevaSeccional(){
-    this.mostrarPanelNueva = !this.mostrarPanelNueva;
-  }
-
-  mostrarPanelEditarSeccional(index: number) {
-    this.cerrarPaneles();
-    this.seccionalEditada = this.seccionalesLocal[index];
-    var estabaAbierto = this.mostrarPanelEditar[index];
-    if (estabaAbierto) {
-      this.mostrarPanelEditar[index] = false;
-    } else {
-      this.mostrarPanelEditar = this.mostrarPanelEditar.map((_, i) => i === index);
-    }
-  }
-
-  editarSeccional() {
-    this.baseDeDatos.editarSeccional(this.usuarioActivo.idUsuario, this.seccionalEditada).subscribe({
-      next: (resp) => {
-        console.log('Seccional actualizada', resp);
-        this.cerrarPaneles();
-      },
-      error: (err) => {
-        console.error('Error al actualizar', err);
-      },
-    });
-  }
-
-  cerrarPaneles(){
-    this.mostrarPanelNueva = false;
-    for (let i = 0; i < this.mostrarPanelEditar.length; i++){
-      this.mostrarPanelEditar[i] = false;
-    }
-  }
-
-  */
-
  export class SeccionalesComponent implements OnInit, OnDestroy {
-
+  prefijoImagen = prefijoImagen;
   seccionalesLocal: Seccional[] = [];
 
   private perfilSubscripcion: Subscription | null = null;
@@ -109,32 +45,7 @@ export class SeccionalesComponent implements OnInit{
     // Cuando cargas las seccionales, inicializá también el array de flags
     this.baseDeDatos.buscarSeccionales(() => {
     this.seccionalesLocal = seccionales.filter(s => s.idSeccional !== 0).map(s => {
-      let imagen = '';
-  
-      switch (s.nombre.trim()) {
-        case 'Avellaneda Centro':
-          imagen = '/seccionales/seccional1.jpg';
-          break;
-        case 'Ituzaingó Centro':
-          imagen = '/seccionales/seccional2.jpg';
-          break;
-        case 'La Plata':
-          imagen = '/seccionales/seccional3.jpg';
-          break;
-        case 'Lomas de Zamora':
-          imagen = '/seccionales/seccional4.png';
-          break;
-        case 'Moron':
-          imagen = '/seccionales/seccional5.jpg';
-          break;
-        case 'Quilmes':
-          imagen = '/seccionales/seccional6.jpg';
-          break;
-        default:
-          imagen = '/seccionales/default.jpg';
-      }
-  
-      return { ...s, imagen };
+      return { ...s };
     });
   
     this.mostrarPanelEditar = new Array(this.seccionalesLocal.length).fill(false);
@@ -242,17 +153,9 @@ export class SeccionalesComponent implements OnInit{
     }
     return nuevaPalabra;
   }
-  /*
-  modalAbierto = false;
-  seccionalSeleccionada: Seccional | null = null;
 
-  abrirModal(seccional: Seccional) {
-    this.seccionalSeleccionada = seccional;
-    this.modalAbierto = true;
+  imagen(index: number): string{
+    return this.prefijoImagen+this.seccionalesLocal[index].imagen;
   }
 
-  cerrarModal() {
-    this.modalAbierto = false;
-    this.seccionalSeleccionada = null;
-  }*/
 }

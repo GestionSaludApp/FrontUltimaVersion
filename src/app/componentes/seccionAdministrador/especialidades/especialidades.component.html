@@ -8,9 +8,8 @@
 <div class="especialidades-container">
   <div class="tarjetas">
     <div *ngFor="let especialidad of especialidadesLocal; let i = index" class="tarjeta">
-      <!-- Imagen ahora apunta directamente al campo 'imagen' -->
-      <img [src]="especialidad.imagen" alt="Logo de especialidad" class="imagen-especialidad">
-      
+      <img [src]="imagen(i)" alt="Logo de especialidad" class="imagen-especialidad">
+
       <div class="info-especialidad">
         <h4>{{ especialidad.nombre }}</h4>
         <p *ngIf="perfilActivo?.rol === 'administrador'">
