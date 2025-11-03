@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { NavegacionService } from '../../../servicios/navegacion.service';
+import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-activacion',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './activacion.component.html',
   styleUrl: './activacion.component.css'
 })
@@ -16,6 +18,7 @@ export class ActivacionComponent {
   passwordIngresado: string = '';
   codigoIngresado: string = '';
 
+  showPassword: boolean = false;
   mensaje: string = '';
 
   constructor(private baseDeDatos: BasededatosService, private navegar: NavegacionService) {}
@@ -58,6 +61,10 @@ export class ActivacionComponent {
     this.emailIngresado = '';
     this.passwordIngresado = '';
     this.codigoIngresado = '';
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
   }
 
 }
