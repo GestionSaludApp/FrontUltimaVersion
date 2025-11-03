@@ -46,7 +46,7 @@
   </div>
 
   <!-- Exportar CSV -->
-  <div class="exportar">
+  <div *ngIf="perfilActivo?.rol === 'administrador'" class="exportar">
     <button class="btn-exportar" (click)="exportarCSV()">Exportar</button>
   </div>
 </div>

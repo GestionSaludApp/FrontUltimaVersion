@@ -92,6 +92,7 @@ export class NuevoProfesionalComponent implements OnInit{
     nuevaDisponibilidad.idEspecialidad = this.especialidadSeleccionada;
     this.disponibilidadesCreadas.push(nuevaDisponibilidad);
   }
+
   eliminarDisponibilidad(index: number) {
     this.disponibilidadesCreadas.splice(index, 1);
   }
@@ -106,6 +107,7 @@ export class NuevoProfesionalComponent implements OnInit{
       disp.horaInicio = horas * 60 + minutos;
     } else {disp.horaFin = horas * 60 + minutos;}
   }
+  
   leerMinutosLocal(input: number): string {return leerMinutos(input);}
 
 }

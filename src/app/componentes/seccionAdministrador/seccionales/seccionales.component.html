@@ -27,23 +27,6 @@
           <p>Email: {{ seccional.email }}</p>
         </div>
 
-      <!-- Botón para ver especialidades (modal) 
-        <button *ngIf="perfilActivo?.rol === 'administrador'" (click)="abrirModal(seccional)">
-          Ver especialidades
-        </button>
-
-       Modal sencillo 
-      <div class="modal" *ngIf="modalAbierto">
-        <div class="modal-contenido">
-          <h3>{{ seccionalSeleccionada?.nombre }}</h3>
-          <p *ngFor="let esp of seccionalSeleccionada?.especialidades">
-            - {{ esp.nombre }} ({{ esp.duracion }} min)
-          </p>
-          <button (click)="cerrarModal()">Cerrar</button>
-        </div>
-      </div>
-      -->
-
       <ng-container *ngIf="perfilActivo">
         <div *ngIf="perfilActivo.rol === 'administrador'" class="seccional-admin">
           {{ seccional.nombre }} *placeholder*
@@ -95,7 +78,7 @@
     </div>
   </ng-container>
 
-  <div class="VentanaNivel0 exportar">
+  <div *ngIf="perfilActivo?.rol === 'administrador'" class="VentanaNivel0 exportar">
     <button name="exportarExcel" (click)="exportarCSV()">Exportar</button>
   </div>
 </div>

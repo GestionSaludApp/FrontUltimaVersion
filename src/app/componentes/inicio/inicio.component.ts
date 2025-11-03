@@ -3,13 +3,12 @@ import { UsuarioActivoService } from '../../servicios/usuario-activo.service';
 import { NavegacionService } from '../../servicios/navegacion.service';
 import { Perfil } from '../../clases/perfil';
 import { Subscription } from 'rxjs';
-import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [NgIf, RouterLink],
+  imports: [RouterLink],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
