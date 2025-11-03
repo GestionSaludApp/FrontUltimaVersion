@@ -5,6 +5,7 @@ export class Turno {
     idTurno: string;
     idPaciente: number = 0;
     idProfesional: number = 0;
+    nombreProfesional: string = '';
     idSeccional: number;
     seccionalNombre: string;
     idEspecialidad: number;
