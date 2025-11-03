@@ -38,7 +38,6 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.perfilSubscripcion = this.usuarioActivo.perfilObservable$.subscribe(perfil => {
       this.perfilActivo = perfil;
-      console.log('Perfil activo:', this.perfilActivo);
     });
     this.baseDeDatos.buscarEspecialidades(() => {
        this.especialidadesLocal = especialidades.filter(esp => esp.idEspecialidad !== 0).map(esp => {

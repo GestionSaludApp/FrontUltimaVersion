@@ -26,6 +26,7 @@ import { ContactenosComponent } from './componentes/contactenos/contactenos.comp
 import { GestiononlineComponent } from './componentes/gestiononline/gestiononline.component';
 import { EstudiosComponent } from './componentes/estudios/estudios.component';
 import { ConocermasComponent } from './componentes/conocermas/conocermas.component';
+import { VerHistoriaClinicaComponent } from './componentes/seccionPaciente/ver-historia-clinica/ver-historia-clinica.component';
 
 export const routes: Routes = [
 
@@ -46,6 +47,7 @@ export const routes: Routes = [
     //seccion paciente
     { path: 'turnosActivos', component: VerTurnosActivosComponent },
     { path: 'turnosDisponibles', component: VerTurnosDisponiblesComponent },
+    { path: 'historiaClinica', component: VerHistoriaClinicaComponent },
 
     //seccion profesional
     { path: 'turnosAtencion', component: AtencionComponent },

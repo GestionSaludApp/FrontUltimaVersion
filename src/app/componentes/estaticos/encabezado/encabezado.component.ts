@@ -39,6 +39,7 @@ export class EncabezadoComponent implements OnInit{
   irRegistro(){this.navegar.irRegistro();}
   irEspecialidades(){this.navegar.irEspecialidades();}
   irSeccionales(){this.navegar.irSeccionales();}
+  irHistoriaClinica(){this.navegar.irHistoriaClinica();}
 
   //subBarra
   activeTab: string = 'datosPersonales';

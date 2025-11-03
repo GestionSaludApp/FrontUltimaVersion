@@ -140,6 +140,18 @@ export class BasededatosService {
     );
   }
 
+  buscarReportes(idPaciente: number): Observable<Reporte[]> {
+    return this.http.post<any[]>(this.apiUrl + '/buscarReportesPorPaciente', idPaciente).pipe(
+      map(respuesta => {
+        return respuesta.map(datos => {
+          const reporte = new Reporte();
+          reporte.cargarDatos(datos);
+          return reporte;
+        });
+      })
+    );
+  }
+
   solicitarTurno(turno: Turno): Observable<Turno> {
     return this.http.post<any>(this.apiUrl + '/solicitarTurno', turno).pipe(
       map(respuesta => {
