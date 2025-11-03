@@ -55,7 +55,7 @@ export class DatosPersonalesComponent implements OnInit{
 
   especialidad(): string | null{
     if(this.perfilActivo instanceof Profesional){
-      return this.especialidadesLocal[this.perfilActivo.idEspecialidad].nombre;
+      return this.especialidadesLocal[this.perfilActivo.idEspecialidad-1].nombre;
     }
     return null
   }
