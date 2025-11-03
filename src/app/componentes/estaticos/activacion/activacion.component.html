@@ -35,6 +35,10 @@
                  placeholder="Escriba el código" required>
         </div>
 
+        <button type="button" class="btn btn-outline-secondary" (click)="activarUsuario()">
+          <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+        </button>
+
         <p>{{mensaje}}</p>
   
       </form>
