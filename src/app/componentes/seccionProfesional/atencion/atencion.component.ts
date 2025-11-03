@@ -52,8 +52,11 @@ export class AtencionComponent implements OnInit{
   }
 
   terminarTurno(turno: Turno) {
-    console.log(turno);
+    let idPacienteTemp = (turno as any).idPerfilPaciente;
+    let idProfesionalTemp = (turno as any).idPerfilProfesional;
     this.turnoSeleccionado = turno;
+    this.turnoSeleccionado.idPaciente = idPacienteTemp;
+    this.turnoSeleccionado.idProfesional = idProfesionalTemp;
   }
 
   cerrarReporte() {
