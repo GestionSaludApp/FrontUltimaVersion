@@ -37,6 +37,7 @@
     <div *ngFor="let t of turnosDisponibles" class="tarjeta-turno turno-disponible">
       <span>{{ t.especialidadNombre }}</span>
       <span>{{ t.seccionalNombre }}</span>
+      <span>con {{ t.nombreProfesional }}</span>
       <span>{{ diasLocal[t.diaSemana] | titlecase }} {{ leerMinutos(t.horaInicio) }}</span>
       <button class="btn-solicitar" (click)="solicitarTurno(t)">Solicitar</button>
     </div>

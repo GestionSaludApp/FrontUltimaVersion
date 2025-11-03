@@ -8,6 +8,7 @@ export var especialidades: Especialidad[] = [];
 export var seccionales: Seccional[] = [];
 
 export var nombresEspecialidades: string[] = [
+  'Sin definir',
   'Cardiología',
   'Clínica Médica',
   'Dermatología',
@@ -23,6 +24,7 @@ export var nombresEspecialidades: string[] = [
 ];
 
 export var nombresSeccionales: string[] = [
+  'Sin definir',
   'Avellaneda Centro',
   'Ituzaingó Centro',
   'La Plata',
