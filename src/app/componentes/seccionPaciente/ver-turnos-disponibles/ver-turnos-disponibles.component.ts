@@ -10,6 +10,8 @@ import { UsuarioActivoService } from '../../../servicios/usuario-activo.service'
 import { TitleCasePipe } from '@angular/common';
 import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http';
+import { Seccional } from '../../../clases/seccional';
+import { Especialidad } from '../../../clases/especialidad';
 
 @Component({
   selector: 'app-ver-turnos-disponibles',
@@ -20,12 +22,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VerTurnosDisponiblesComponent implements OnInit {
   diasLocal = dias;
-  seccionalesLocal = seccionales;
-  especialidadesLocal = especialidades;
+  seccionalesLocal: Seccional[] = [];
+  especialidadesLocal: Especialidad[] = [];
   
   disponibilidadesActivas: Disponibilidad[] = [];
   turnosDisponibles: Turno[] = [];
-  turnosActivos: Turno[] = [];   // nuevos: turnos asignados al usuario
+  turnosActivos: Turno[] = [];
 
   duracion: number = 20;
 
@@ -41,13 +43,7 @@ export class VerTurnosDisponiblesComponent implements OnInit {
   ) {}
   
   ngOnInit(): void {
-    // Cargar especialidades y seccionales
-    this.baseDeDatos.buscarEspecialidades(() => {
-      this.especialidadesLocal = especialidades.slice(1);
-    });
-    this.baseDeDatos.buscarSeccionales(() => {
-      this.seccionalesLocal = seccionales.slice(1);
-    });
+    this.cargarDatosBasicos();
 
     // Cargar turnos asignados al usuario al iniciar
     let idPerfil = this.usuarioActual.perfil?.idPerfil;
@@ -59,6 +55,18 @@ export class VerTurnosDisponiblesComponent implements OnInit {
         error: (err) => console.error('Error cargando turnos activos:', err)
       });
     }
+
+    this.filtrar();
+  }
+
+  cargarDatosBasicos(){
+    // Cargar especialidades y seccionales
+    this.baseDeDatos.buscarEspecialidades(() => {
+      this.especialidadesLocal = especialidades;
+    });
+    this.baseDeDatos.buscarSeccionales(() => {
+      this.seccionalesLocal = seccionales.slice(1);
+    });
   }
   
   filtrar() {
@@ -67,7 +75,7 @@ export class VerTurnosDisponiblesComponent implements OnInit {
     if (this.filtroDia !== null) filtros.diaSemana = this.filtroDia;
     if (this.filtroSeccional !== null) filtros.idSeccional = this.filtroSeccional;
     if (this.filtroEspecialidad !== null) filtros.idEspecialidad = this.filtroEspecialidad;
-    
+
     this.baseDeDatos.buscarTurnos(filtros).subscribe({
       next: (turnos: Turno[]) => {
         this.turnosDisponibles = turnos;
@@ -85,8 +93,6 @@ export class VerTurnosDisponiblesComponent implements OnInit {
     } else {
       return;
     }
-
-    console.log('Turno a solicitar:', turno);
     
     this.baseDeDatos.solicitarTurno(turno).subscribe({
       next: () => {

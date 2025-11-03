@@ -1,12 +1,14 @@
 import { dias, leerMinutos } from "../funciones/fechas";
-import { especialidades, seccionales } from "../funciones/listas";
+import { nombresEspecialidades, nombresSeccionales } from "../funciones/listas";
 
 export class Turno {
     idTurno: string;
     idPaciente: number = 0;
     idProfesional: number = 0;
     idSeccional: number;
+    seccionalNombre: string;
     idEspecialidad: number;
+    especialidadNombre: string;
     diaSemana: number;
     horaInicio: number;
     horaFin: number;
@@ -16,7 +18,9 @@ export class Turno {
     constructor(){
         this.idTurno = '';
         this.idSeccional = 0;
+        this.seccionalNombre = '';
         this.idEspecialidad = 0;
+        this.especialidadNombre = '';
         this.diaSemana = 0;
         this.horaInicio = 0;
         this.horaFin = 0;
@@ -26,13 +30,15 @@ export class Turno {
     
     cargarDatos(datos: Partial<Turno>) {
         Object.assign(this, datos);
+        this.especialidadNombre = nombresEspecialidades[this.idEspecialidad];
+        this.seccionalNombre = nombresSeccionales[this.idSeccional];
     }
 
     seccional():string{
-        return seccionales[this.idSeccional].nombre;
+        return this.seccionalNombre;
     }
     especialidad(): string {
-        return especialidades[this.idEspecialidad].nombre;
+        return this.especialidadNombre;
     }
     dia():string{
         return dias[this.diaSemana];

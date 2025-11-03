@@ -6,7 +6,7 @@
 
     <div class="filtro">
       <label for="dia">Día de la semana:</label>
-      <select id="dia" [(ngModel)]="filtroDia" (change)="filtrar()">
+      <select id="dia" [(ngModel)]="filtroDia" (ngModelChange)="filtrar()">
         <option [ngValue]="null">-- Todos --</option>
         <option *ngFor="let dia of diasLocal; let i = index" [ngValue]="i">{{ dia }}</option>
       </select>
@@ -14,7 +14,7 @@
 
     <div class="filtro">
       <label for="seccional">Seccional:</label>
-      <select id="seccional" [(ngModel)]="filtroSeccional" (change)="filtrar()">
+      <select id="seccional" [(ngModel)]="filtroSeccional" (ngModelChange)="filtrar()">
         <option [ngValue]="null">-- Todas --</option>
         <option *ngFor="let seccional of seccionalesLocal" [ngValue]="seccional.idSeccional">{{ seccional.nombre }}</option>
       </select>
@@ -22,7 +22,7 @@
 
     <div class="filtro">
       <label for="especialidad">Especialidad:</label>
-      <select id="especialidad" [(ngModel)]="filtroEspecialidad" (change)="filtrar()">
+      <select id="especialidad" [(ngModel)]="filtroEspecialidad" (ngModelChange)="filtrar()">
         <option [ngValue]="null">-- Todas --</option>
         <option *ngFor="let esp of especialidadesLocal" [ngValue]="esp.idEspecialidad">{{ esp.nombre }}</option>
       </select>
@@ -35,8 +35,8 @@
   <h3>Turnos disponibles</h3>
   <div class="turnos-container" *ngIf="turnosDisponibles.length > 0; else sinTurnos">
     <div *ngFor="let t of turnosDisponibles" class="tarjeta-turno turno-disponible">
-      <span>{{ t.especialidad() }}</span>
-      <span>{{ t.seccional() }}</span>
+      <span>{{ t.especialidadNombre }}</span>
+      <span>{{ t.seccionalNombre }}</span>
       <span>{{ diasLocal[t.diaSemana] | titlecase }} {{ leerMinutos(t.horaInicio) }}</span>
       <button class="btn-solicitar" (click)="solicitarTurno(t)">Solicitar</button>
     </div>
