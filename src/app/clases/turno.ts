@@ -4,6 +4,7 @@ import { nombresEspecialidades, nombresSeccionales } from "../funciones/listas";
 export class Turno {
     idTurno: string;
     idPaciente: number = 0;
+    nombrePaciente: string = '';
     idProfesional: number = 0;
     nombreProfesional: string = '';
     idSeccional: number;

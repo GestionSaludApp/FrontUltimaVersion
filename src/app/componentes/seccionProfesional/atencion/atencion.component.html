@@ -8,6 +8,7 @@
         <p><strong>Seccional:</strong> {{ turno.seccional() }}</p>
         <p><strong>Día:</strong> {{ diasLocal[turno.diaSemana] | titlecase }}</p>
         <p><strong>Hora:</strong> {{ leerMinutos(turno.horaInicio) }}</p>
+        <p><strong>Paciente:</strong> {{ turno.nombrePaciente }}</p>
       </div>
       <button class="btn-terminar" (click)="terminarTurno(turno)">
         Terminar Turno
