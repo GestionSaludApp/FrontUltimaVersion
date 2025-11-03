@@ -25,7 +25,7 @@
         <input id="fechaNacimiento" type="date" [(ngModel)]="fechaNacimientoIngresada" (ngModelChange)="emitirDatos()"/>
       </div>
     </div>
-  
+    
     <!-- Especialidad -->
     <div class="form-section">
   
@@ -38,7 +38,7 @@
         </select>
       </div>
     </div>
-  
+
     <!-- Disponibilidad -->
     <div class="form-section">
       <h4>Disponibilidad horaria</h4>
@@ -47,7 +47,7 @@
   
         <div class="form-group">
           <label for="seccional">Seccional:</label>
-          <select id="seccional" [(ngModel)]="disp.idSeccional">
+          <select id="seccional" [(ngModel)]="disp.idSeccional" (ngModelChange)="emitirDatos()">
             <option *ngFor="let sec of listaSeccionalesLocal" [value]="sec.idSeccional">
               {{ sec.nombre }}
             </option>
@@ -56,7 +56,7 @@
   
         <div class="form-group">
           <label for="dia">Día:</label>
-          <select id="dia" [(ngModel)]="disp.diaSemana">
+          <select id="dia" [(ngModel)]="disp.diaSemana" (ngModelChange)="emitirDatos()">
             <option *ngFor="let dia of listaDiasLocal; let i = index" [value]="i">
               {{ dia }}
             </option>
@@ -87,6 +87,7 @@
       </div>
   
       <button class="btn-agregar" (click)="agregarDisponibilidad()">➕ Nuevo día</button>
+      <button class="btn-agregar" (click)="completarHorarios()">Terminar</button>
     </div>
-  
+
 </div>  

@@ -30,6 +30,7 @@ export class NuevoProfesionalComponent implements OnInit{
 
   especialidadSeleccionada: number = 0;
   disponibilidadesCreadas: Disponibilidad[] = [];
+  horariosCompletos: boolean = false;
 
   @Output() datosGenerados = new EventEmitter<any>();
 
@@ -57,6 +58,9 @@ export class NuevoProfesionalComponent implements OnInit{
     }
     if (!soloNumerosRegex.test(this.dniIngresado)) {
       textoAdvertenciaDNI = 'DNI inválido: debe contener solo números.';
+      verificado = false;
+    }
+    if (!this.horariosCompletos) {
       verificado = false;
     }
 
@@ -95,6 +99,11 @@ export class NuevoProfesionalComponent implements OnInit{
 
   eliminarDisponibilidad(index: number) {
     this.disponibilidadesCreadas.splice(index, 1);
+  }
+
+  completarHorarios(){
+    this.horariosCompletos = true;
+    this.emitirDatos();
   }
 
   actualizarHora(event: Event, disp: Disponibilidad, momento: string) {
