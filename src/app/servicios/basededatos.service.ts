@@ -157,8 +157,9 @@ export class BasededatosService {
       })
     );
   }
-  cancelarTurno(idTurno: string, motivo: string): Observable<any> {
-    const body = { idTurno, motivo };
+  
+  cancelarTurno(idUsuario: number, idTurno: string, motivo: string): Observable<any> {
+    const body = { idUsuario, idTurno };
 
     return this.http.post(this.apiUrl + '/cancelarTurno', body).pipe(
       tap(() => console.log('Turno cancelado correctamente')),
@@ -168,8 +169,6 @@ export class BasededatosService {
       })
     );
   }
-
-
 
   agregarEspecialidad(idUsuario: number, nuevaEspecialidad: Especialidad, imagen: File | null): Observable<any> {
     const crearBody = () => {

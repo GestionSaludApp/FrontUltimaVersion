@@ -153,7 +153,7 @@ export class VerTurnosDisponiblesComponent implements OnInit {
       confirmButtonColor: '#d33'
     }).then(result => {
       if (result.isConfirmed && result.value) {
-          this.baseDeDatos.cancelarTurno((turno.idTurno), result.value).subscribe({
+          this.baseDeDatos.cancelarTurno(this.usuarioActual.idUsuario, turno.idTurno, result.value).subscribe({
           next: () => {
             Swal.fire('Cancelado', 'El turno fue cancelado correctamente.', 'success');
             this.turnosActivos = this.turnosActivos.filter(t => t.idTurno !== turno.idTurno);
