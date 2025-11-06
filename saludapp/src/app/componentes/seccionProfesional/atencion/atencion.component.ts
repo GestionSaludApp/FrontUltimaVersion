@@ -80,5 +80,4 @@ export class AtencionComponent implements OnInit{
     this.turnosActivos = this.turnosActivos.filter(t => t.idTurno !== turno.idTurno);
     this.cerrarReporte();
   }
-  
 }
