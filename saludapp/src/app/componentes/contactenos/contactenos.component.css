@@ -1,0 +1,98 @@
+/* Card principal */
+.contact-card {
+    border-radius: 1rem; /* bordes redondeados */
+    overflow: hidden;
+    background-color: #f8f9fa; /* fondo suave */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Imagen izquierda */
+  .contact-card img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.8); /* oscurece la imagen para resaltar el formulario */
+    transition: transform 0.3s ease;
+  }
+  
+  .contact-card img:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Título del formulario */
+  .contact-card h2 {
+    font-size: 2rem;
+    color: #212529;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  /* Labels de los inputs */
+  .contact-card label {
+    color: #495057;
+    font-weight: 500;
+  }
+  
+  /* Inputs y textarea */
+  .contact-card input,
+  .contact-card textarea {
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+    border: 1px solid #ced4da;
+  }
+  
+  .contact-card input:focus,
+  .contact-card textarea:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    outline: none;
+  }
+  
+  /* Iconos de los labels */
+  .contact-card i {
+    color: #0d6efd;
+  }
+  
+  .contact-card button.btn-primary i {
+    color: currentColor;  /* hereda el color del texto del botón */
+    font-size: 1.2rem;    /* opcional → lo hace un poquito más grande */
+  }  
+  
+  .contact-card button.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  
+  /* Espaciado interno */
+  .contact-card .p-4 {
+    padding: 2rem !important;
+  }
+  
+  /* Responsivo: centrar el formulario en móviles */
+  @media (max-width: 767px) {
+    .contact-card {
+      text-align: center;
+    }
+    .contact-card h2 {
+      font-size: 1.75rem;
+    }
+  }
+
+  .btn {
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 123, 255, 0.3);
+  }
+  
+  .btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(0, 123, 255, 0.3);
+  }
+  
+  

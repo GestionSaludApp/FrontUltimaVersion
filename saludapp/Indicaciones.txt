@@ -1,0 +1,34 @@
+Agregar término al diccionario:
+- llamada: 'texto visible',
+- preferible agregarlo en todos los idiomas actuales
+
+Agregar nuevo componente:
+- import { diccionario } from '../../../funciones/diccionario';
+- texto = diccionario['es']; (el idioma luego será gestionado por un servicio).
+
+Generar métodos de navegación:
+- nombrar los métodos del servicio navegacion así: ir + {{ nombreComponente }}
+- el método debe hacer una llamada al router así: this.router.navigate(['/NombreComponente']);
+- agregar en app.router.ts la ruta así:
+    { path: 'NombreComponente', component: NombreComponenteComponent },
+
+Para generar llamadas a la API, poner .suscribe() al final del llamado a la función del servicio, sino, no funciona.
+
+APP MOVIL ANDROID
+1) ng build --base-href ./
+2) npx cap copy
+3) npx cap open android
+
+PARA EL FUTURO
+Archivos:
+npm install @capacitor/filesystem
+npx cap sync
+crearFunciones
+
+Convertir a APK (app):
+ng build
+npx cap copy
+npx cap open android (emular)
+
+ICONO (icon.png)
+capacitor-assets generate

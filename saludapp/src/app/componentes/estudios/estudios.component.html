@@ -1,0 +1,51 @@
+<section class="container py-5">
+  <div class="text-center mb-4">
+    <h2 class="fw-bold">Turnos para Estudios</h2>
+    <p class="text-muted">Seleccioná el tipo de estudio y reservá tu turno fácilmente.</p>
+  </div>
+
+  <!-- Selección de estudios -->
+  <div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+    <button 
+      *ngFor="let e of estudios"
+      class="btn"
+      [ngClass]="estudioSeleccionado === e ? 'btn-primary' : 'btn-outline-primary'"
+      (click)="seleccionarEstudio(e)">
+      {{ e }}
+    </button>
+  </div>
+
+  <!-- Calendario -->
+  <div *ngIf="estudioSeleccionado">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
+
+  <!-- Modal de horarios -->
+  <div class="modal fade" id="horariosModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Horarios para {{fechaSeleccionada}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body text-center">
+          <div *ngIf="horariosDisponibles.length > 0; else noHorarios">
+            <div class="d-flex justify-content-center gap-2 flex-wrap">
+              <button
+                *ngFor="let h of horariosDisponibles"
+                class="btn"
+                [ngClass]="h.disponible ? 'btn-success' : 'btn-danger'"
+                [disabled]="!h.disponible"
+                (click)="confirmarTurno(h.hora)">
+                {{h.hora}}
+              </button>
+            </div>
+          </div>
+          <ng-template #noHorarios>
+            <p class="text-muted">No hay horarios disponibles.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

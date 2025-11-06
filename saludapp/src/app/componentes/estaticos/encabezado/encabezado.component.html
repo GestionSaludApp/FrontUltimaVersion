@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+
+<div *ngIf="perfilActivo" class="subbarra-tabs">
+  <!-- Botón común para todos -->
+  <button 
+    name="botonDatosPersonales" 
+    (click)="irDatosPersonales()" 
+    [class.active]="activeTab==='datosPersonales'">Datos personales</button>
+
+  <!-- Botones solo para pacientes -->
+  <ng-container *ngIf="perfilActivo.rol==='paciente'">
+    <button 
+      name="botonTurnosDisponibles" 
+      (click)="irTurnosDisponibles()" 
+      [class.active]="activeTab==='turnosDisponibles'">Nuevo turno</button>
+<!--
+    <button 
+      name="botonHistoriaClinica" 
+      (click)="irHistoriaClinica()" 
+      [class.active]="activeTab==='historiaClinica'">Historia clinica</button>
+-->
+  </ng-container>
+
+  <!-- Botones solo para profesionales -->
+  <ng-container *ngIf="perfilActivo.rol==='profesional'">
+    <button 
+      name="botonTurnosAtencion" 
+      (click)="irTurnosAtencion()" 
+      [class.active]="activeTab==='turnosAtencion'">Ver turnos</button>
+  </ng-container>
+
+  <!-- Botones solo para administradores
+  <ng-container *ngIf="perfilActivo.rol==='administrador'">
+    <button 
+      name="botonClientes" 
+      (click)="irClientes()" 
+      [class.active]="activeTab==='clientes'">Clientes</button>
+
+    <button 
+      name="botonPersonal" 
+      (click)="irPersonal()" 
+      [class.active]="activeTab==='personal'">Personal</button>
+
+    <button 
+      name="botonHabilitaciones" 
+      (click)="irHabilitaciones()" 
+      [class.active]="activeTab==='habilitaciones'">Habilitaciones</button>
+  </ng-container>
+ -->
+  
+</div>

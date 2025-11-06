@@ -1,0 +1,33 @@
+npm install -g @ionic/cli
+npm install @capacitor/core @capacitor/cli
+
+ionic init
+npx cap init
+ng build => editar capacitor.config.ts con "dist/browser" o "dist/nombreApp/browser" en webdir
+npx cap copy
+npm install @capacitor/android
+npx cap add android
+
+npx cap open android (el emulador podría no funcionar - usar build APK y probar en celu)
+
+
+Archivos:
+
+npm install @capacitor/filesystem
+npx cap sync
+crearFunciones
+
+Convertir a APK (app):
+ng build
+npx cap copy
+npx cap open android (emular)
+
+
+ICONO (icon.png)
+capacitor-assets generate
+
+GENERAR VERSION GOOGLE PLAY
+ng build
+npx cap copy
+npx cap sync android
+npx cap open android
