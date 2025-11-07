@@ -6,22 +6,29 @@ import { especialidades, seccionales } from '../../../funciones/listas';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { NuevoReporteComponent } from "../../nuevosElementos/nuevo-reporte/nuevo-reporte.component";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-atencion',
   standalone: true,
-  imports: [NgFor, CommonModule, NuevoReporteComponent],
+  imports: [NgFor, CommonModule, NuevoReporteComponent, FormsModule],
   templateUrl: './atencion.component.html',
   styleUrl: './atencion.component.css'
 })
-export class AtencionComponent implements OnInit{
+export class AtencionComponent implements OnInit {
   turnosActivos: Turno[] = [];
+  turnosFiltrados: Turno[] = [];
   turnoSeleccionado: Turno | null = null;
+  filtroDia: number | null = null;
+
   diasLocal = dias;
   seccionalesLocal = seccionales;
   especialidadesLocal = especialidades;
 
-  constructor(private usuarioActual: UsuarioActivoService, private baseDeDatos: BasededatosService){}
+  constructor(
+    private usuarioActual: UsuarioActivoService,
+    private baseDeDatos: BasededatosService
+  ) {}
 
   ngOnInit(): void {
     if (this.usuarioActual.perfil) {
@@ -32,10 +39,10 @@ export class AtencionComponent implements OnInit{
     });
     this.baseDeDatos.buscarSeccionales(() => {
       this.seccionalesLocal = seccionales.slice(1);
-    });    
+    });
   }
 
-  buscarTurnos(){
+  buscarTurnos() {
     const filtros: any = {};
 
     if (this.usuarioActual.perfil) {
@@ -43,13 +50,27 @@ export class AtencionComponent implements OnInit{
       this.baseDeDatos.buscarTurnosActivos(filtros).subscribe({
         next: (turnos: Turno[]) => {
           this.turnosActivos = turnos;
+          this.turnosFiltrados = [...this.turnosActivos];
         },
         error: (error) => {
           console.error('Error al cargar turnos:', error);
         }
-      });  
+      });
     }
   }
+
+  filtrarPorDia() {
+    const dia = Number(this.filtroDia); // lo pasamos a número
+  
+    if (!dia) {
+      this.turnosFiltrados = [...this.turnosActivos];
+    } else {
+      this.turnosFiltrados = this.turnosActivos.filter(
+        (t) => t.diaSemana === dia
+      );
+    }
+  }
+      
 
   terminarTurno(turno: Turno) {
     let idPacienteTemp = (turno as any).idPerfilPaciente;
@@ -63,7 +84,7 @@ export class AtencionComponent implements OnInit{
     this.turnoSeleccionado = null;
   }
 
-  leerMinutos(minutos: number){
+  leerMinutos(minutos: number) {
     return leerMinutos(minutos);
   }
 
@@ -76,8 +97,8 @@ export class AtencionComponent implements OnInit{
   }
 
   finalizarTurno(turno: Turno) {
-    // Lo quitamos de la lista
     this.turnosActivos = this.turnosActivos.filter(t => t.idTurno !== turno.idTurno);
+    this.turnosFiltrados = this.turnosFiltrados.filter(t => t.idTurno !== turno.idTurno);
     this.cerrarReporte();
   }
 }
