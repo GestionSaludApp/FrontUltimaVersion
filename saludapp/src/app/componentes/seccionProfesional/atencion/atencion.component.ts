@@ -79,7 +79,8 @@ export class AtencionComponent implements OnInit {
     this.turnoSeleccionado.idPaciente = idPacienteTemp;
     this.turnoSeleccionado.idProfesional = idProfesionalTemp;
   }
-
+  
+  
   cerrarReporte() {
     this.turnoSeleccionado = null;
   }

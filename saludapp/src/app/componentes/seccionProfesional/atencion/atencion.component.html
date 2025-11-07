@@ -34,3 +34,17 @@
     <p class="sin-turnos">No hay turnos asignados para el día seleccionado.</p>
   </ng-template>
 </section>
+
+<!-- Modal animado tipo SweetAlert -->
+<div class="modal fade-in" *ngIf="turnoSeleccionado">
+  <div class="modal-content animate-pop">
+    <button class="modal-close" (click)="cerrarReporte()">✖</button>
+
+    <app-nuevo-reporte
+      [idPerfilPaciente]="turnoSeleccionado.idPaciente"
+      [idPerfilProfesional]="turnoSeleccionado.idProfesional"
+      [idTurno]="turnoSeleccionado.idTurno"
+      (cerrar)="cerrarReporte()">
+    </app-nuevo-reporte>
+  </div>
+</div>
