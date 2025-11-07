@@ -1,0 +1,31 @@
+<section class="turnos-container">
+  <h2 class="turnos-titulo">Turnos Activos</h2>
+
+  <div class="turnos-grid">
+    <div *ngFor="let turno of turnosActivos" class="turno-card">
+      <div class="turno-info">
+        <p><strong>Especialidad:</strong> {{ turno.especialidad() }}</p>
+        <p><strong>Seccional:</strong> {{ turno.seccional() }}</p>
+        <p><strong>Día:</strong> {{ diasLocal[turno.diaSemana] | titlecase }}</p>
+        <p><strong>Hora:</strong> {{ leerMinutos(turno.horaInicio) }}</p>
+        <p><strong>Paciente:</strong> {{ turno.nombrePaciente }}</p>
+      </div>
+      <button class="btn-terminar" (click)="terminarTurno(turno)">
+        Terminar Turno
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal animado tipo SweetAlert -->
+  <div class="modal fade-in" *ngIf="turnoSeleccionado">
+    <div class="modal-content animate-pop">
+      <button class="modal-close" (click)="cerrarReporte()">✖</button>
+      <app-nuevo-reporte
+        [idPerfilPaciente]="turnoSeleccionado.idPaciente"
+        [idPerfilProfesional]="turnoSeleccionado.idProfesional"
+        [idTurno]="turnoSeleccionado.idTurno"
+        (cerrar)="cerrarReporte()">
+      </app-nuevo-reporte>
+    </div>
+  </div>
+</section>

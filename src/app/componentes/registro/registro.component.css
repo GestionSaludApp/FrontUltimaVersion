@@ -1,0 +1,84 @@
+.registro-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('/ingresar.jpg'); /* ruta de la imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2rem 1rem;
+  z-index: 0; /* fondo por debajo */
+}
+
+.registro-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px); /* desenfoque */
+  background-color: rgba(0,0,0,0.3); /* oscurece un poco */
+  z-index: 0; /* debajo del contenido */
+}
+
+.registro-container > * {
+  position: relative;
+  z-index: 1; /* contenido visible por encima del blur */
+}
+
+.registro-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 900px;
+  width: 100%;
+}
+  
+  .subtitulo { color: #666; margin-bottom: 1.5rem; }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+  }
+  
+  .form-group input {
+    border: 1px solid #d0d7de;
+    border-radius: 10px;
+    padding: .6rem .8rem;
+    outline: none;
+  }
+  
+  .btn {
+    border: none;
+    border-radius: 10px;
+    padding: .75rem 1rem;
+    cursor: pointer;
+  }
+  
+  .btn-primary { background: #0d6efd; color: #fff; }
+  .btn-secondary { background: #6c757d; color: #fff; margin-top: .8rem; }
+  
+  .error { color: #b00020; margin-top: .8rem; }
+  
+  .credencial {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px dashed #cfd8dc;
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+.credencial img { 
+    width: 180px; height: 180px; 
+}

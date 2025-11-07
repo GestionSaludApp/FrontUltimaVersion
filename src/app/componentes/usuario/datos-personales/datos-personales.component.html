@@ -1,0 +1,53 @@
+<div class="perfil-container">
+
+  <!-- Cambiar perfil -->
+  <section class="cambiar-perfil">
+    <h2>Cambiar perfil</h2>
+    <div class="selector">
+      <select id="perfil" [(ngModel)]="perfilSeleccionado">
+        <option [ngValue]="null">Seleccionar perfil</option>
+        <option *ngFor="let perfil of perfilesUsuario" [ngValue]="perfil">
+          {{ perfil.alias }}
+        </option>
+      </select>
+      <button (click)="cambiarPerfil()">✔ Activar</button>
+    </div>
+  </section>
+
+  <!-- Perfil activo -->
+  <section *ngIf="perfilActivo" class="perfil-card">
+    <h3>Perfil activo: {{ perfilActivo.alias }}</h3>
+
+    <div class="perfil-info">
+      <div class="perfil-foto">
+        <img [src]="avatar()" alt="Foto de perfil">
+      </div>
+
+      <div class="perfil-datos">
+        <p><strong>Nombre:</strong> {{ perfilActivo.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ perfilActivo.apellido }}</p>
+        <p><strong>DNI:</strong> {{ perfilActivo.dni }}</p>
+        <p><strong>Fecha de nacimiento:</strong> {{ perfilActivo.fechaNacimiento.slice(0,-7) }}</p>
+        <p><strong>Rol:</strong> {{ perfilActivo.rol }}</p>
+      </div>
+    </div>
+
+    <div *ngIf="perfilActivo.rol === 'profesional'" class="perfil-profesional">
+      <p><strong>Especialidad:</strong> {{ especialidad() }}</p>
+      <p><strong>Disponibilidad horaria:</strong></p>
+      <ul>
+        <li *ngFor="let horario of cronograma()">
+          {{ seccional(horario.idSeccional) }} - 
+          {{ horario.dia() }}: 
+          {{ horario.horarioInicio() }} a {{ horario.horarioFin() }}
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Nuevo perfil -->
+  <section class="nuevo-perfil">
+    <app-nuevo-perfil></app-nuevo-perfil>
+  </section>
+
+</div>

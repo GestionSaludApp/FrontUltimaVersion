@@ -1,0 +1,44 @@
+<div class="login-page d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-5 shadow-lg form-card" style="max-width: 450px; width: 100%;">
+      <h2 class="text-center mb-4 fw-bold">Activar mi usuario</h2>
+      <form (ngSubmit)="activarUsuario()">
+        
+        <!-- Email -->
+        <div class="mb-4">
+          <label for="email" class="form-label fw-semibold">Email</label>
+          <input type="email" class="form-control form-control-lg" id="email"
+                 [(ngModel)]="emailIngresado"
+                 name="email"
+                 (ngModelChange)="verificarEmail()"
+                 placeholder="Escriba su email" required>
+          <p class="advertencia">{{advertenciaEmail}}</p>
+        </div>
+  
+        <!-- Contraseña con ojito -->
+        <div class="mb-4">
+          <label for="password" class="form-label fw-semibold">Contraseña</label>
+          <div class="input-group input-group-lg">
+            <input [type]="showPassword ? 'text' : 'password'" class="form-control" 
+                   id="password" [(ngModel)]="passwordIngresado" name="password" placeholder="********" required>
+            <button type="button" class="btn btn-outline-secondary" (click)="togglePassword()">
+              <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Codigo -->
+        <div class="mb-4">
+          <label for="codigo" class="form-label fw-semibold">Codigo</label>
+          <input type="codigo" class="form-control form-control-lg" id="codigo"
+                 [(ngModel)]="codigoIngresado"
+                 name="codigo"
+                 placeholder="Escriba el código" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg w-100 mb-3" (click)="activarUsuario()">Activar</button>
+
+        <p>{{mensaje}}</p>
+  
+      </form>
+    </div>
+</div>  

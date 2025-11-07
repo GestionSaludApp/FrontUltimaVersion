@@ -1,0 +1,204 @@
+.subbarra-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid #ccc; /* línea de la subbarra */
+    background-color: #f9f9f9;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+}
+
+.subbarra-tabs button {
+    flex: 1; /* que todos tengan el mismo tamaño */
+    padding: 10px 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+.subbarra-tabs button:hover {
+    background-color: #eaeaea;
+}
+
+.subbarra-tabs button.active {
+    background-color: #ffffff;
+    border-bottom: 3px solid #007bff; /* marca la pestaña activa */
+    font-weight: 600;
+    color: #007bff;
+}
+
+
+/* Hero */
+.hero-img {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+  }
+  
+  .hero-img-full {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .hero-img .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .hero-img .overlay h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  }
+  
+  .hero-img .overlay p {
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    margin-top: 0.5rem;
+  }
+  
+  .hero-btn {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .hero-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  }
+  
+  /* Imágenes animadas */
+  .img-reducida {
+    max-width: 80%;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .img-reducida:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Botones */
+  .transition-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .transition-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    border: none;
+    font-weight: 600;
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #6610f2, #0d6efd);
+  }
+  
+  .btn-outline-primary {
+    border-color: #0d6efd;
+    color: #0d6efd;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+  }
+  
+  /* Cards guía */
+  .guide-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-height: 300px; /* compacta las tarjetas */
+  }
+  
+  .guide-card img {
+    height: 160px; /* ajustar */
+    object-fit: cover;
+  }
+  
+  .guide-card .card-body {
+    padding: 0.75rem 1rem; /* menos espacio interno */
+  }
+  
+  .container.py-4 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  h2.mb-4 {
+    margin-bottom: 1.5rem !important; /* reduce espacio bajo el título */
+  }
+  
+  
+  /* Footer */
+  .footer {
+    background: linear-gradient(180deg, #5f656a, #343a40);
+    color: #f8f9fa;
+    padding: 4rem 0;
+  }
+  
+  .footer h5 {
+    font-size: 1.25rem;
+  }
+  
+  .text-footer-muted {
+    color: #ced4da;
+    font-size: 0.95rem;
+  }
+  
+  .text-footer-link {
+    color: #ffffff;
+    font-weight: 500;
+  }
+  
+  .text-footer-link:hover {
+    color: #ffc107;
+    text-decoration: underline;
+  }  
+  
+  .info-section h2 {
+    font-weight: 700;
+  }
+  
+  .info-section p {
+    font-size: 1.05rem;
+  }
+  
+  .info-section ul li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-section ul i {
+    font-size: 1.2rem;
+  }
+  
+  .btn {
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+  }  

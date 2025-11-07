@@ -1,0 +1,74 @@
+11/04/2025
+Se creo el proyecto en github con cuenta propia
+Se creo el proyecto en angular
+Se crearon las carpetas básicas de organización del codigo
+Se crearon dos servicios esenciales (usuarioActivo y navegacion)
+Se configuro el servicio de navegacion
+Se creo el archivo de diccionario
+Se configuro provisoriamente la pantalla principal de la app
+
+16/04/2025
+Se creo la cuenta y base de datos en mdb go
+Se definieron las tablas de la base de datos
+Se creo la tabla usuarios en la base de datos
+Se creo el proyecto para la api de gestión de la base de datos
+Se configuraron 3 archivos en la api bdd (receptor, control y bdd)
+Se configuro la conexion a la bdd
+Se configuro el servicio de basededatos para acceder a la api desde la aplicacion
+
+17/04/2025
+Se configuro el servicio de navegacion con las ventanas actuales
+Se crearon las clases usuario, paciente, profesional y administrador
+Se creo el archivo conteniendo las listas de datos
+Se creo el archivo para funciones relativas a fechas
+Se creo el componente para registro de nuevos usuarios
+Se conformaron las funciones necesarias para el registro de usuarios en la base de datos
+Se creo la funcionalidad de auditoria
+Se creo una APK alpha para testear funcionabilidad movil
+
+18/04/2025
+Se agregaron verificaciones de email y contraseña para el registro de nuevos usuarios
+Se agregó el manejo de errores provenientes del registro de usuarios
+Se implemento el sistema de inicio de sesión para usuarios (sin rol)
+Se crearon las bases de datos para pacientes, profesionales y administradores
+Se implemento la auditoria de cambios
+Se implemento el control de IP en auditoria
+Se implemento el registro de datos básicos de roles de usuario (nombre, apellido, dni, fechaNacimiento)
+Se crearon las tablas para especialidades, seccionales y disponibilidad de profesionales
+Se creo una APK alpha para testear funcionabilidad movil
+
+20/04/2025
+Se creo la clase para asignar cronogramas a profesionales
+Se implementó el sistema para registrar cronogramas en profesionales
+Se implementó el registro completo de profesionales en la base de datos
+Se creo una APK alpha para testear funcionabilidad movil
+
+21/04/2025
+Se creo la tabla en la BDD para almacenar perfiles
+Se actualizo la lógica de registro e inicio de sesión para considerar perfiles
+
+22/04/2025
+Se reestructuraron los roles como herencia de la clase perfil
+
+23/04/2025
+Se modularizó la funcion de registro de nuevos usuarios en bdd
+Se agrego la actualización de ultimo ingreso al ingresar
+
+24/04/2025
+Se actualizó la API para ingreso de perfiles
+Se implementó el componente para ver los datos del perfil
+Se creó la clase turno y el componente para visualizar los disponibles
+Se implementó la recuperación de disponibilidades desde la bdd
+
+26/04/2025
+Se agregó la idProfesional a disponibilidades y turnos
+Se implementó la creación de turnos desde la bdd
+Se implementó la visualización de turnos en el navegador
+
+28/04/2025
+Se implementó un sistema de generación de cuentas para futuras pruebas
+
+04/05/2025
+Se implementó la creación de nuevos perfiles
+Se implementó la lsita de especialidades en bdd
+
