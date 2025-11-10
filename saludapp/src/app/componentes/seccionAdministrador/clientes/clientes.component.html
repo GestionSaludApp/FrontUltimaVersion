@@ -1,2 +1,46 @@
-<h2>Gestión de Clientes</h2>
-<p>Aquí se mostrarán los clientes registrados.</p>
+<!--
+<section class="recepcion-container">
+    <h2>Turnos del día</h2>
+  
+     Buscador 
+    <div class="buscador" *ngIf="turnosDelDia.length > 0">
+      <input
+        type="text"
+        placeholder="Buscar por nombre, apellido o DNI..."
+        [(ngModel)]="filtro"
+        (input)="filtrarTurnos()"
+      />
+    </div>
+  
+    <table *ngIf="turnosFiltrados.length > 0" class="tabla-turnos">
+      <thead>
+        <tr>
+          <th>Paciente</th>
+          <th>DNI</th>
+          <th>Médico</th>
+          <th>Hora</th>
+          <th>Estado</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let turno of turnosFiltrados">
+          <td>{{ turno.nombrePaciente }} {{ turno.apellidoPaciente }}</td>
+          <td>{{ turno.dniPaciente }}</td>
+          <td>{{ turno.nombreProfesional }}</td>
+          <td>{{ turno.horaInicio }}</td>
+          <td>{{ turno.estado }}</td>
+          <td>
+            <button 
+              *ngIf="turno.estado === 'Pendiente'" 
+              (click)="marcarComoPresente(turno.idTurno)">
+              Marcar como presente
+            </button>
+            <span *ngIf="turno.estado === 'Presente'">✅ Presente</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="turnosDelDia.length === 0">No hay turnos para mostrar.</p>
+</section>  -->

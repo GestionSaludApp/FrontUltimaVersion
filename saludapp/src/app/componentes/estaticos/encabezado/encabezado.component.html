@@ -29,14 +29,14 @@
       [class.active]="activeTab==='turnosAtencion'">Ver turnos</button>
   </ng-container>
 
-  <!-- Botones solo para administradores
+  <!-- Botones solo para administradores-->
   <ng-container *ngIf="perfilActivo.rol==='administrador'">
     <button 
       name="botonClientes" 
       (click)="irClientes()" 
-      [class.active]="activeTab==='clientes'">Clientes</button>
+      [class.active]="activeTab==='clientes'">Pacientes</button>
 
-    <button 
+<!--<button 
       name="botonPersonal" 
       (click)="irPersonal()" 
       [class.active]="activeTab==='personal'">Personal</button>
@@ -44,8 +44,6 @@
     <button 
       name="botonHabilitaciones" 
       (click)="irHabilitaciones()" 
-      [class.active]="activeTab==='habilitaciones'">Habilitaciones</button>
+      [class.active]="activeTab==='habilitaciones'">Habilitaciones</button>-->
   </ng-container>
- -->
-  
 </div>
