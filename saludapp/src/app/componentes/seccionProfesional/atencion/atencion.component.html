@@ -23,11 +23,13 @@
         <p><strong>Día:</strong> {{ diasLocal[turno.diaSemana] | titlecase }} {{ obtenerFecha(turno.diaSemana) | date:'dd/MM/yyyy' }}</p>
       </div>
       <div class="turno-acciones">
-       <button class="btn-ver">📋 Ver Historia</button>
+       <button class="btn-ver" [routerLink]="['/historiaClinica']">📋 Ver Historia</button>
+       <!--el boton redirije a la pagina, pero falta pasarle como parametro el id del paciente
+       o del perfil que se quiera ver-->
         <button class="btn-terminar" (click)="terminarTurno(turno)">✅ Terminar</button>
       </div>
     </div>
-  </div>
+  </div>  
 
   <!-- Sin turnos -->
   <ng-template #sinTurnos>

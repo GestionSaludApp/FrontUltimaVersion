@@ -7,11 +7,12 @@ import { UsuarioActivoService } from '../../../servicios/usuario-activo.service'
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { NuevoReporteComponent } from "../../nuevosElementos/nuevo-reporte/nuevo-reporte.component";
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-atencion',
   standalone: true,
-  imports: [NgFor, CommonModule, NuevoReporteComponent, FormsModule],
+  imports: [NgFor, CommonModule, NuevoReporteComponent, FormsModule, RouterLink],
   templateUrl: './atencion.component.html',
   styleUrl: './atencion.component.css'
 })
