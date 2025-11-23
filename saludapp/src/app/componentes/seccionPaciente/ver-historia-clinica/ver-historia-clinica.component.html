@@ -1,0 +1,40 @@
+<div class="contenedor-historia">
+  <h2>🩺 Historia Clínica</h2>
+
+  <!-- Loader -->
+  <div *ngIf="cargando" class="spinner-container">
+    <div class="spinner"></div>
+    <p>Cargando datos...</p>
+  </div>
+
+  <!-- Cuando no hay perfil -->
+  <div *ngIf="!cargando && !perfilActivo">
+    <p>No se encontró el perfil del paciente.</p>
+  </div>
+
+  <!-- Cuando hay perfil -->
+  <div *ngIf="!cargando && perfilActivo">
+    <h3>Paciente: {{ perfilActivo.nombre }} {{ perfilActivo.apellido }}</h3>
+
+    <div *ngIf="reportesLocal.length > 0; else sinReportes">
+      <ul class="lista-reportes">
+        <li *ngFor="let reporte of reportesLocal" class="reporte-item">
+          <div class="reporte-encabezado">
+            <h4>Turno #{{ reporte.idTurno }}</h4>
+            <p class="fecha">{{ reporte.fecha | date:'dd/MM/yyyy' }}</p>
+          </div>
+
+          <p class="informe"><strong>Informe:</strong> {{ reporte.informe }}</p>
+
+          <div *ngIf="reporte.imagen" class="imagen-container">
+            <img [src]="reporte.imagen" alt="Imagen del reporte" />
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <ng-template #sinReportes>
+      <p class="sin-reportes">No hay reportes disponibles para este paciente.</p>
+    </ng-template>
+  </div>
+</div>

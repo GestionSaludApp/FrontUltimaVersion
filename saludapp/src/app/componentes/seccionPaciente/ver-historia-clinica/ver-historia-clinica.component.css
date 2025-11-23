@@ -1,0 +1,89 @@
+.contenedor-historia {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #ffffff10;
+    backdrop-filter: blur(6px);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: #eee;
+    font-family: "Poppins", sans-serif;
+}
+  
+h2 {
+    text-align: center;
+    color: #5cd3ff;
+    margin-bottom: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+  
+.lista-reportes {
+    list-style: none;
+    padding: 0;
+}
+  
+.reporte-item {
+    background: #1f1f1f;
+    border-left: 4px solid #5cd3ff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+}
+  
+.reporte-item:hover {
+    transform: scale(1.01);
+}
+
+.reporte-encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.fecha {
+    color: #aaa;
+    font-size: 0.9em;
+}
+  
+.informe {
+    margin: 10px 0;
+}
+  
+.imagen-container img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+  
+.sin-reportes {
+    text-align: center;
+    margin-top: 20px;
+    color: #bbb;
+}
+  
+/* 🔄 Spinner */
+.spinner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+}
+  
+.spinner {
+    border: 4px solid #333;
+    border-top: 4px solid #5cd3ff;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    animation: spin 1s linear infinite;
+}
+  
+@keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+}  

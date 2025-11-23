@@ -1,0 +1,166 @@
+.titulo-sections {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background-color: #007bff;
+  border-radius: 2px;
+}
+
+/* Separación del navbar */
+section {
+  margin-top: 80px; /* podés ajustar este valor según tu navbar */
+} 
+
+/* Contenedor principal */
+.VentanaNivel0 {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Título de la lista */
+.VentanaNivel0 > p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Grid de seccionales */
+.seccionales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  align-items: start;
+}
+
+/* Cada card */
+.seccional-card {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+
+/* 🔧 Corregido: antes decía ": hover" con espacio */
+.seccional-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Header de cada seccional */
+.seccional-header {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #333;
+}
+
+/* Imagen de la seccional */
+.seccional-imagen {
+  margin-bottom: 10px;
+}
+
+.seccional-imagen img {
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Panel de edición */
+.seccional-editar {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #eef6ff;
+  border-radius: 8px;
+}
+
+.seccional-editar label {
+  display: block;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.seccional-editar input {
+  width: 100%;
+  padding: 6px 8px;
+  margin-top: 4px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Botones */
+button {
+  cursor: pointer;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 10px;
+  margin-right: 8px;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Botones de edición */
+.botones-editar button {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.botones-editar button:last-child {
+  background-color: #f44336;
+}
+
+/* Botones generales */
+.seccional-admin > button,
+.seccional-agregar button,
+.exportar button {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+/* Contenedor de exportar */
+.exportar {
+  text-align: right;
+  margin-top: 20px;
+}
+
+
+/*.modal {
+  position: fixed;
+  top: 0; left: 0; right:0; bottom:0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-contenido {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}*/

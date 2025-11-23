@@ -1,0 +1,79 @@
+.ventana-nivel1 {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: #fdfdfd;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  h2, h3 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .form-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  
+  input, select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .advertencia {
+    font-size: 0.85rem;
+    color: crimson;
+    margin-top: 4px;
+  }
+  
+  .disponibilidad-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-left: 3px solid #0077cc;
+    background: #f1f8ff;
+    border-radius: 6px;
+  }
+  
+  .btn-eliminar {
+    background: #e63946;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .btn-eliminar:hover {
+    background: #d62828;
+  }
+  
+  .btn-agregar {
+    background: #2a9d8f;
+    color: #fff;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .btn-agregar:hover {
+    background: #21867a;
+  }  

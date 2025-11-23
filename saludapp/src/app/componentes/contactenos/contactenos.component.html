@@ -1,0 +1,47 @@
+<section class="container my-5">
+  <div class="card contact-card shadow-lg border-0">
+    <div class="row g-0">
+
+      <!-- Imagen solo en pantallas medianas o mayores -->
+      <div class="col-md-6 d-none d-md-block">
+        <img src="contact.jpg" alt="Contáctanos" class="img-fluid h-100 w-100">
+      </div>  
+
+      <!-- Formulario -->
+      <div class="col-md-6 p-4">
+        <form (ngSubmit)="enviarFormulario(formulario)" #formulario="ngForm">
+          <h2>Contáctanos</h2>
+
+          <div class="mb-3">
+            <label for="name" class="form-label">
+              <i class="bi bi-person-fill me-2"></i>Nombre
+            </label>
+            <input type="text" class="form-control" id="name" name="nombre" ngModel placeholder="Tu nombre" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">
+              <i class="bi bi-envelope-fill me-2"></i>Correo electrónico
+            </label>
+            <input type="email" class="form-control" id="email" name="email" ngModel placeholder="nombre@ejemplo.com" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="message" class="form-label">
+              <i class="bi bi-chat-left-text-fill me-2"></i>Mensaje
+            </label>
+            <textarea class="form-control" id="message" name="mensaje" ngModel rows="4" placeholder="Escribí tu consulta..." required></textarea>
+          </div>
+
+          <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary px-4 py-2 shadow-sm rounded-pill transition-hover">
+              <i class="bi bi-send-fill me-2"></i>
+              Enviar
+            </button>
+          </div>          
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>

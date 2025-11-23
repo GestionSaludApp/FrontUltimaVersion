@@ -1,0 +1,70 @@
+<div class="registro-container d-flex justify-content-center py-5"> 
+  <div class="registro-card shadow-lg p-4 rounded-4" style="max-width: 500px; width: 100%;">
+    
+    <!-- Título -->
+    <h2 class="text-center mb-2">Registro de Usuario</h2>
+    <p class="text-center text-muted mb-4">Completá tus datos para crear tu cuenta</p>
+
+    <form (ngSubmit)="registrarUsuario()">
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" [(ngModel)]="emailIngresado" name="email"
+               (ngModelChange)="verificarEmail()" 
+               class="form-control form-control-sm" 
+               placeholder="ejemplo@correo.com" required>
+        <small class="text-danger">{{advertenciaEmail}}</small>
+      </div>
+
+      <!-- Contraseña -->
+      <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input type="password" [(ngModel)]="passwordIngresado" name="password"
+               (ngModelChange)="verificarPassword()" 
+               class="form-control form-control-sm" 
+               placeholder="********" required>
+        <small class="text-danger">{{advertenciaPassword}}</small>
+      </div>
+
+      <!-- Confirmar contraseña -->
+      <div class="mb-3">
+        <label class="form-label">Confirmar contraseña</label>
+        <input type="password" [(ngModel)]="passwordConfirmacionIngresado" name="passwordConfirmacion"
+               (ngModelChange)="verificarPassword()" 
+               class="form-control form-control-sm" 
+               placeholder="********" required>
+        <small class="text-danger">{{advertenciaConfirmacionPassword}}</small>
+      </div>
+
+      <!-- Rol -->
+      <div class="mb-3">
+        <label class="form-label">Rol</label>
+        <select class="form-select form-select-sm" [(ngModel)]="rolSeleccionado" name="rol">
+          <ng-container *ngFor="let rol of rolesUsuarioLocal">
+            <option [value]="rol">{{ rol }}</option>
+          </ng-container>
+        </select>
+      </div>
+
+      <!-- Imagen -->
+      <div class="mb-3">
+        <label class="form-label">Imagen del DNI</label>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-control form-control-sm">
+      </div>
+
+      <!-- Subcomponentes por rol -->
+      <div class="mb-3">
+        <app-nuevo-paciente *ngIf="rolSeleccionado === 'paciente'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-paciente>
+        <app-nuevo-profesional *ngIf="rolSeleccionado === 'profesional'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-profesional>
+        <app-nuevo-administrador *ngIf="rolSeleccionado === 'administrador'" (datosGenerados)="guardarDatosUsuario($event)"></app-nuevo-administrador>
+      </div>
+
+      <!-- Botón registrar -->
+      <button type="submit" class="btn btn-primary w-100">
+        <i class="fa-solid fa-floppy-disk me-2"></i> Registrarme
+      </button>
+
+    </form>
+  </div>
+</div>

@@ -13,4 +13,8 @@ export class Reporte {
         this.idTurno = '';
         this.informe = '';
     }
+
+    cargarDatos(datos: Partial<Reporte>) {
+        Object.assign(this, datos);
+    }
 }

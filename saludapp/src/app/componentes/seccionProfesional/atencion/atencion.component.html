@@ -1,0 +1,52 @@
+<section class="agenda-container">
+  <h2 class="agenda-titulo">🩺 Agenda del Profesional</h2>
+
+  <!-- Filtros -->
+  <div class="filtros">
+    <label for="filtroDia">Filtrar por día:</label>
+    <select id="filtroDia" [(ngModel)]="filtroDia" (change)="filtrarPorDia()">
+      <option value="">Todos</option>
+      <option *ngFor="let dia of diasLocal; let i = index" [value]="i">
+        {{ dia | titlecase }}
+      </option>
+    </select>
+  </div>
+
+  <!-- Turnos -->
+  <div class="turnos-grid" *ngIf="turnosFiltrados.length > 0; else sinTurnos">
+    <div *ngFor="let turno of turnosFiltrados" class="turno-card">
+      <div class="turno-info">
+        <h3>{{ leerMinutos(turno.horaInicio) }} hs</h3>
+        <p><strong>Paciente:</strong> {{ turno.nombrePaciente }}</p>
+        <p><strong>Especialidad:</strong> {{ turno.especialidad() }}</p>
+        <p><strong>Seccional:</strong> {{ turno.seccional() }}</p>
+        <p><strong>Día:</strong> {{ diasLocal[turno.diaSemana] | titlecase }} {{ obtenerFecha(turno.diaSemana) | date:'dd/MM/yyyy' }}</p>
+      </div>
+      <div class="turno-acciones">
+       <button class="btn-ver" [routerLink]="['/historiaClinica']">📋 Ver Historia</button>
+       <!--el boton redirije a la pagina, pero falta pasarle como parametro el id del paciente
+       o del perfil que se quiera ver-->
+        <button class="btn-terminar" (click)="terminarTurno(turno)">✅ Terminar</button>
+      </div>
+    </div>
+  </div>  
+
+  <!-- Sin turnos -->
+  <ng-template #sinTurnos>
+    <p class="sin-turnos">No hay turnos asignados para el día seleccionado.</p>
+  </ng-template>
+</section>
+
+<!-- Modal animado tipo SweetAlert -->
+<div class="modal fade-in" *ngIf="turnoSeleccionado">
+  <div class="modal-content animate-pop">
+    <button class="modal-close" (click)="cerrarReporte()">✖</button>
+
+    <app-nuevo-reporte
+      [idPerfilPaciente]="turnoSeleccionado.idPaciente"
+      [idPerfilProfesional]="turnoSeleccionado.idProfesional"
+      [idTurno]="turnoSeleccionado.idTurno"
+      (cerrar)="cerrarReporte()">
+    </app-nuevo-reporte>
+  </div>
+</div>
