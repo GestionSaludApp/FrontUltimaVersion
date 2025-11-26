@@ -32,4 +32,4 @@ npx cap copy
 npx cap sync android
 npx cap open android
 
-en android studio: Gradle Scripts _ build.gradle: android_defaultConfig { cambiar version code +1 y versionName +0,01 } [en ambos capacitor.cordova y capacitor.android]
+en android studio: Gradle Scripts _ build.gradle: android_defaultConfig { cambiar version code +1 y versionName +0,01 } [en tres: app, capacitor.cordova y capacitor.android]
