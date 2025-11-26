@@ -1,4 +1,4 @@
-package com.saludapp.app;
+package com.practicas3_clinica.app;
 
 import com.getcapacitor.BridgeActivity;
 

@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">saludapp</string>
     <string name="title_activity_main">saludapp</string>
-    <string name="package_name">com.saludapp.app</string>
-    <string name="custom_url_scheme">com.saludapp.app</string>
+    <string name="package_name">com.practicas3_clinica.app</string>
+    <string name="custom_url_scheme">com.practicas3_clinica.app</string>
 </resources>

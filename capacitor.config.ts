@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.saludapp.app',
+  appId: 'com.practicas3_clinica.app',
   appName: 'SaludApp',
   webDir: 'dist/saludapp/browser'
 };
