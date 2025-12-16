@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { rolesUsuario } from '../../funciones/listas';
-import { NgFor, NgIf } from '@angular/common';
 import { BasededatosService } from '../../servicios/basededatos.service';
 import { Usuario } from '../../clases/usuario';
 import { fechaAhora } from '../../funciones/fechas';
@@ -9,18 +8,20 @@ import { NuevoPacienteComponent } from "../nuevosElementos/nuevo-paciente/nuevo-
 import { NuevoProfesionalComponent } from "../nuevosElementos/nuevo-profesional/nuevo-profesional.component";
 import { NuevoAdministradorComponent } from "../nuevosElementos/nuevo-administrador/nuevo-administrador.component";
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, NgModel } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, NgFor, NuevoPacienteComponent, NuevoProfesionalComponent, NuevoAdministradorComponent, NgIf, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, NuevoPacienteComponent, NuevoProfesionalComponent, NuevoAdministradorComponent, CommonModule],
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.css'
 })
 export class RegistroComponent {
   rolesUsuarioLocal = rolesUsuario;
+  passProfesional: string = 'hKjp98';
+  passAdministrador: string = 'uMns63';
 
   emailIngresado: string = '';
   advertenciaEmail: string = '';
@@ -31,6 +32,8 @@ export class RegistroComponent {
   passwordConfirmacionIngresado: string = '';
   advertenciaConfirmacionPassword: string = '';
 
+  rolFront: string = 'paciente';
+  rolAutorizado: boolean = false;
   rolSeleccionado: 'paciente' | 'profesional' | 'administrador' = 'paciente';
   imagenSeleccionada: File | null = null;
 
@@ -156,6 +159,45 @@ export class RegistroComponent {
   
     this.rolSeleccionado = 'paciente';
     this.datosUsuario = {};
+  }
+
+  onRolChange() {
+    this.rolAutorizado = false;
+
+    if (this.rolFront === 'profesional') {
+      const pass = prompt('Ingrese la contraseña de Profesional');
+
+      if (pass === this.passProfesional) {
+        this.rolAutorizado = true;
+        this.rolSeleccionado = this.rolFront;
+        return;
+      }
+    }
+
+    if (this.rolFront === 'administrador') {
+      const pass = prompt('Ingrese la contraseña de Administrador');
+
+      if (pass === this.passAdministrador) {
+        this.rolAutorizado = true;
+        this.rolSeleccionado = this.rolFront;
+        return;
+      }
+    }
+
+    if (this.rolFront === 'paciente') {
+      this.rolAutorizado = true;
+      this.rolSeleccionado = this.rolFront;
+      return;
+    }
+
+    alert('Contraseña incorrecta');
+    this.navegar.irError();
+    this.rolSeleccionado = 'paciente';
+    this.rolFront = 'paciente';
+    setTimeout(() => {
+      this.navegar.irRegistro();
+    }, 10);
+    
   }
 
 }

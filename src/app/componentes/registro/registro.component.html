@@ -40,7 +40,7 @@
       <!-- Rol -->
       <div class="mb-3">
         <label class="form-label">Rol</label>
-        <select class="form-select form-select-sm" [(ngModel)]="rolSeleccionado" name="rol">
+        <select class="form-select form-select-sm" [(ngModel)]="rolFront" (change)="onRolChange()" name="rol">
           <ng-container *ngFor="let rol of rolesUsuarioLocal">
             <option [value]="rol">{{ rol }}</option>
           </ng-container>
