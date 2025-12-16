@@ -35,6 +35,9 @@ export class VerTurnosDisponiblesComponent implements OnInit {
   filtroDia: number | null = null;
   filtroSeccional: number | null = null;
   filtroEspecialidad: number | null = null;
+  filtroDiaFiltro: number | null = null;
+  filtroSeccionalFiltro: number | null = null;
+  filtroEspecialidadFiltro: number | null = null;
 
   constructor(
     private baseDeDatos: BasededatosService, 
@@ -56,7 +59,7 @@ export class VerTurnosDisponiblesComponent implements OnInit {
       });
     }
 
-    this.filtrar();
+    this.aplicarFiltros();
   }
 
   cargarDatosBasicos(){
@@ -69,12 +72,18 @@ export class VerTurnosDisponiblesComponent implements OnInit {
     });
   }
   
-  filtrar() {
+  filtrar(tipo: string, dato: any){
+    if (tipo === 'dia') {this.filtroDiaFiltro = dato;}
+    if (tipo === 'seccional') {this.filtroSeccionalFiltro = dato;}
+    if (tipo === 'especialidad') {this.filtroEspecialidadFiltro = dato;}
+  }
+
+  aplicarFiltros() {
     const filtros: any = {};
   
-    if (this.filtroDia !== null) filtros.diaSemana = this.filtroDia;
-    if (this.filtroSeccional !== null) filtros.idSeccional = this.filtroSeccional;
-    if (this.filtroEspecialidad !== null) filtros.idEspecialidad = this.filtroEspecialidad;
+    if (this.filtroDia !== null) filtros.diaSemana = this.filtroDiaFiltro;
+    if (this.filtroSeccional !== null) filtros.idSeccional = this.filtroSeccionalFiltro;
+    if (this.filtroEspecialidad !== null) filtros.idEspecialidad = this.filtroEspecialidadFiltro;
 
     this.baseDeDatos.buscarTurnos(filtros).subscribe({
       next: (turnos: Turno[]) => {
@@ -138,6 +147,21 @@ export class VerTurnosDisponiblesComponent implements OnInit {
     const horas = Math.floor(minutos / 60);
     const mins = minutos % 60;
     return `${horas.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
+  }
+
+  verFecha(codigo: string): string {
+    const match = codigo.match(/d(\d{2})(\d{2})(\d{4})/);
+
+    if (!match) {
+      return '';
+    }
+
+    const dia = match[1];
+    const mes = match[2];
+    const anio = match[3];
+
+    let fecha = `${dia}/${mes}/${anio}`;
+    return fecha;
   }
 
   //cancelar los turnos 

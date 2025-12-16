@@ -3,6 +3,7 @@
 <div *ngFor="let turno of turnosActivos" class="VentanaNivel0">
   {{ turno.especialidad() }}
   {{ turno.seccional() }}
+  {{ turno.nombreProfesional }}
   {{ diasLocal[turno.diaSemana] | titlecase }}
   {{ leerMinutos(turno.horaInicio) }}
   <button (click)="cancelarTurno(turno)">Cancelar Turno</button>

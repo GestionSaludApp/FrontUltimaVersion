@@ -1,12 +1,32 @@
+<!-- Turnos asignados -->
+<div class="VentanaNivel1">
+  <h3>Mis turnos asignados</h3>
+  <div class="turnos-container" *ngIf="turnosActivos.length > 0; else sinTurnosAsignados">
+    <div *ngFor="let turno of turnosActivos" class="tarjeta-turno turno-asignado">
+      <span>{{ turno.especialidad() }}</span>
+      <span>{{ turno.seccional() }}</span>
+      <span>con {{ turno.nombreProfesional }}</span>
+      <span>{{ diasLocal[turno.diaSemana] | titlecase }} {{ verFecha(turno.idTurno) }} {{ leerMinutos(turno.horaInicio) }}</span>
+      <button (click)="cancelarTurno(turno)" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Cancelar Turno</button>
+
+    </div>
+  </div>
+  <ng-template #sinTurnosAsignados>
+    <p>No tenés turnos asignados.</p>
+  </ng-template>
+</div>
+
 <div class="VentanaNivel0">
   <h2>Buscar turnos disponibles</h2>
+
+  <button class="btn-solicitar" (click)="aplicarFiltros()">Buscar</button>
 
   <fieldset class="filtros">
     <legend>Filtros</legend>
 
     <div class="filtro">
       <label for="dia">Día de la semana:</label>
-      <select id="dia" [(ngModel)]="filtroDia" (ngModelChange)="filtrar()">
+      <select id="dia" [(ngModel)]="filtroDia" (ngModelChange)="filtrar('dia',filtroDia)">
         <option [ngValue]="null">-- Todos --</option>
         <option *ngFor="let dia of diasLocal; let i = index" [ngValue]="i">{{ dia }}</option>
       </select>
@@ -14,7 +34,7 @@
 
     <div class="filtro">
       <label for="seccional">Seccional:</label>
-      <select id="seccional" [(ngModel)]="filtroSeccional" (ngModelChange)="filtrar()">
+      <select id="seccional" [(ngModel)]="filtroSeccional" (ngModelChange)="filtrar('seccional',filtroSeccional)">
         <option [ngValue]="null">-- Todas --</option>
         <option *ngFor="let seccional of seccionalesLocal" [ngValue]="seccional.idSeccional">{{ seccional.nombre }}</option>
       </select>
@@ -22,7 +42,7 @@
 
     <div class="filtro">
       <label for="especialidad">Especialidad:</label>
-      <select id="especialidad" [(ngModel)]="filtroEspecialidad" (ngModelChange)="filtrar()">
+      <select id="especialidad" [(ngModel)]="filtroEspecialidad" (ngModelChange)="filtrar('especialidad',filtroEspecialidad)">
         <option [ngValue]="null">-- Todas --</option>
         <option *ngFor="let esp of especialidadesLocal" [ngValue]="esp.idEspecialidad">{{ esp.nombre }}</option>
       </select>
@@ -38,28 +58,11 @@
       <span>{{ t.especialidadNombre }}</span>
       <span>{{ t.seccionalNombre }}</span>
       <span>con {{ t.nombreProfesional }}</span>
-      <span>{{ diasLocal[t.diaSemana] | titlecase }} {{ leerMinutos(t.horaInicio) }}</span>
+      <span>{{ diasLocal[t.diaSemana] | titlecase }} {{ verFecha(t.idTurno) }} {{ leerMinutos(t.horaInicio) }}</span>
       <button class="btn-solicitar" (click)="solicitarTurno(t)">Solicitar</button>
     </div>
   </div>
   <ng-template #sinTurnos>
     <p>No hay turnos disponibles con los filtros seleccionados.</p>
-  </ng-template>
-</div>
-
-<!-- Turnos asignados -->
-<div class="VentanaNivel1">
-  <h3>Mis turnos asignados</h3>
-  <div class="turnos-container" *ngIf="turnosActivos.length > 0; else sinTurnosAsignados">
-    <div *ngFor="let turno of turnosActivos" class="tarjeta-turno turno-asignado">
-      <span>{{ turno.especialidad() }}</span>
-      <span>{{ turno.seccional() }}</span>
-      <span>{{ diasLocal[turno.diaSemana] | titlecase }} {{ leerMinutos(turno.horaInicio) }}</span>
-      <button (click)="cancelarTurno(turno)" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Cancelar Turno</button>
-
-    </div>
-  </div>
-  <ng-template #sinTurnosAsignados>
-    <p>No tenés turnos asignados.</p>
   </ng-template>
 </div>
