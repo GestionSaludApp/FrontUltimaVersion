@@ -12,7 +12,7 @@
         {{ obtenerFecha(turno.diaSemana) | date:'dd/MM/yyyy' }}
         {{ leerMinutos(turno.horaInicio) }}
       </span>
-      <button (click)="cancelarTurno(turno)" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Cancelar Turno</button>
+      <button (click)="cancelarTurno(turno)" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i>Cancelar Turno</button>
     </div>
   </div>
   <ng-template #sinTurnosAsignados>
@@ -62,7 +62,12 @@
       <span>{{ t.seccionalNombre }}</span>
       <span>con {{ t.nombreProfesional }}</span>
       <span>{{ diasLocal[t.diaSemana] | titlecase }} {{ leerMinutos(t.horaInicio) }}</span>
-      <button class="btn-solicitar" (click)="solicitarTurno(t)">Solicitar</button>
+      <button
+          type="button"
+          class="btn-solicitar"
+          (click)="verificarHorario(t)">
+          Solicitar
+      </button>
     </div>
   </div>
   <ng-template #sinTurnos>

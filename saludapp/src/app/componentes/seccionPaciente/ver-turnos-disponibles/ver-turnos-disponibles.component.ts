@@ -88,6 +88,10 @@ export class VerTurnosDisponiblesComponent implements OnInit {
     });
   }
 
+  verificarHorario(turno: Turno){
+    console.log('solicitando turno');
+  }
+
   solicitarTurno(turno: Turno) {
     let idPerfil = this.usuarioActual.perfil?.idPerfil;
     if (idPerfil) {
@@ -140,6 +144,35 @@ export class VerTurnosDisponiblesComponent implements OnInit {
     const horas = Math.floor(minutos / 60);
     const mins = minutos % 60;
     return `${horas.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
+  }
+
+  parseIdTurno(idTurno: string): { dia: string; hora: number } {
+    // ejemplo: s1p496e2d17112025h540
+    const diaMatch = idTurno.match(/d(\d{8})/);
+    const horaMatch = idTurno.match(/h(\d+)/);
+
+    return {
+      dia: diaMatch ? diaMatch[1] : '',
+      hora: horaMatch ? Number(horaMatch[1]) : 0
+    };
+  }
+
+  tieneConflicto(turnoNuevo: Turno): boolean {
+    const nuevo = this.parseIdTurno(turnoNuevo.idTurno);
+
+    return this.turnosActivos.some(turnoActivo => {
+      const activo = this.parseIdTurno(turnoActivo.idTurno);
+
+      // mismo día
+      if (nuevo.dia === activo.dia) {
+        const diferencia = Math.abs(nuevo.hora - activo.hora);
+
+        // menos de 30 minutos antes o después
+        return diferencia < 30;
+      }
+
+      return false;
+    });
   }
 
   //cancelar los turnos 
