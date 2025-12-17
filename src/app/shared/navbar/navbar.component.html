@@ -1,14 +1,66 @@
+<!--
 <nav class="navbar bg-primary" data-bs-theme="dark">
    <a class="nav-link active" aria-current="page" routerLink="/inicio">Principal</a>
    <a class="nav-link" routerLink="/gestiononline">Gestiones Online</a>
    <a class="nav-link" routerLink="/seccionales">Cartilla Médica</a>
    <a class="nav-link" routerLink="/especialidades">Especialidades</a>
    <a class="nav-link" routerLink="/contactenos">Contacto</a>
- 
-   <!-- Muestra un botón u otro según el estado de sesión -->
-   <a *ngIf="!sesionActiva" class="nav-link" class="login-btn" routerLink="/ingreso">Ingresar</a>
 
+   <a *ngIf="!sesionActiva" class="nav-link" class="login-btn" routerLink="/ingreso">Ingresar</a>
    <ng-container *ngIf="sesionActiva">
       <button class="logout-btn" (click)="cerrarSesion()">Cerrar sesión</button>
    </ng-container>
  </nav>
+-->
+ 
+ <!-- ANDROID -->
+<nav class="navbar bg-primary navbar-dark">
+   <div class="container-fluid">
+      <div class="dropdown">
+         <button
+         class="btn btn-primary dropdown-toggle"
+         type="button"
+         data-bs-toggle="dropdown"
+         aria-expanded="false">
+         ☰
+         </button>
+
+         <ul class="dropdown-menu">
+
+         <li>
+            <a class="dropdown-item text-black" routerLink="/inicio">Principal</a>
+         </li>
+
+         <li>
+            <a class="dropdown-item text-black" routerLink="/gestiononline">Gestiones Online</a>
+         </li>
+
+         <li>
+            <a class="dropdown-item text-black" routerLink="/seccionales">Cartilla Médica</a>
+         </li>
+
+         <li>
+            <a class="dropdown-item text-black" routerLink="/especialidades">Especialidades</a>
+         </li>
+
+         <li>
+            <a class="dropdown-item text-black" routerLink="/contactenos">Contacto</a>
+         </li>
+
+         <li><hr class="dropdown-divider"></li>
+
+         <li *ngIf="!sesionActiva">
+            <a class="dropdown-item text-danger" routerLink="/ingreso">Ingresar</a>
+         </li>
+
+         <li *ngIf="sesionActiva">
+            <button
+               class="dropdown-item text-danger"
+               (click)="cerrarSesion()">
+               Cerrar sesión
+            </button>
+         </li>
+         </ul>
+      </div>
+   </div>
+</nav>
