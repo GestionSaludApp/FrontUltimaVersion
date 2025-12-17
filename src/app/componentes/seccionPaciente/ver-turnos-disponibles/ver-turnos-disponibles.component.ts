@@ -189,4 +189,48 @@ export class VerTurnosDisponiblesComponent implements OnInit {
       }
     });
   }
+
+  verificarTurno(turno: Turno) {
+    if (this.tieneConflicto(turno)) {
+      Swal.fire({
+        title: 'Turno no disponible',
+        text: 'Ya tenés un turno el mismo día en un horario muy cercano.',
+        icon: 'warning',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#ffc107'
+      });
+      return;
+    }
+    else {this.solicitarTurno(turno);}
+}
+
+  parseIdTurno(idTurno: string): { dia: string; hora: number } {
+    // ejemplo: s1p496e2d17112025h540
+    const diaMatch = idTurno.match(/d(\d{8})/);
+    const horaMatch = idTurno.match(/h(\d+)/);
+
+    return {
+      dia: diaMatch ? diaMatch[1] : '',
+      hora: horaMatch ? Number(horaMatch[1]) : 0
+    };
+  }
+
+  tieneConflicto(turnoNuevo: Turno): boolean {
+    const nuevo = this.parseIdTurno(turnoNuevo.idTurno);
+
+    return this.turnosActivos.some(turnoActivo => {
+      const activo = this.parseIdTurno(turnoActivo.idTurno);
+
+      // mismo día
+      if (nuevo.dia === activo.dia) {
+        const diferencia = Math.abs(nuevo.hora - activo.hora);
+
+        // menos de 30 minutos antes o después
+        return diferencia < 30;
+      }
+
+      return false;
+    });
+  }
+
 }

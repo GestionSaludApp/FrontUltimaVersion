@@ -59,7 +59,7 @@
       <span>{{ t.seccionalNombre }}</span>
       <span>con {{ t.nombreProfesional }}</span>
       <span>{{ diasLocal[t.diaSemana] | titlecase }} {{ verFecha(t.idTurno) }} {{ leerMinutos(t.horaInicio) }}</span>
-      <button class="btn-solicitar" (click)="solicitarTurno(t)">Solicitar</button>
+      <button class="btn-solicitar" (click)="verificarTurno(t)">Solicitar</button>
     </div>
   </div>
   <ng-template #sinTurnos>
