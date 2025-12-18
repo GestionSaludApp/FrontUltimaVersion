@@ -1,68 +1,38 @@
-<section *ngIf="especialidadesPendientes.length > 0">
-  <h3>Especialidades</h3>
+<section *ngIf="usuariosPendientes.length > 0">
+  <h3>Usuarios</h3>
 
   <div class="auditorias-container">
 
-    <!-- Encabezado -->
-    <div class="fila-auditoria encabezado especialidades">
+    <div class="fila-auditoria encabezado usuarios">
       <span>ID</span>
-      <span>Nombre</span>
-      <span>Duración</span>
-      <span>Acciones</span>
-    </div>
-
-    <!-- Filas -->
-    <div class="fila-auditoria especialidades"
-         *ngFor="let e of especialidadesPendientes">
-
-      <span>{{ e.idEspecialidad }}</span>
-      <span>{{ e.nombre }}</span>
-      <span>{{ e.duracion }}</span>
-
-      <span class="acciones">
-        <button (click)="cambiarEstado(e, 'activo')">Aceptar</button>
-        <button (click)="cambiarEstado(e, 'eliminado')">Eliminar</button>
-      </span>
-    </div>
-
-  </div>
-</section>
-
-<section *ngIf="seccionalesPendientes.length > 0">
-  <h3>Seccionales</h3>
-
-  <div class="auditorias-container">
-
-    <div class="fila-auditoria encabezado seccionales">
-      <span>ID</span>
-      <span>Nombre</span>
-      <span>Dirección</span>
-      <span>Ciudad</span>
-      <span>Provincia</span>
-      <span>Teléfono</span>
       <span>Email</span>
+      <span>Último ingreso</span>
+      <span>Nombre completo</span>
       <span>Acciones</span>
     </div>
 
-    <div class="fila-auditoria seccionales"
-         *ngFor="let s of seccionalesPendientes">
+    <div class="fila-auditoria usuarios"
+         *ngFor="let u of usuariosPendientes">
 
-      <span>{{ s.idSeccional }}</span>
-      <span>{{ s.nombre }}</span>
-      <span>{{ s.direccion }}</span>
-      <span>{{ s.ciudad }}</span>
-      <span>{{ s.provincia }}</span>
-      <span>{{ s.telefono }}</span>
-      <span>{{ s.email }}</span>
+      <span>{{ u.idUsuario }}</span>
+      <span>{{ u.email }}</span>
+      <span>{{ u.ultimoIngreso }}</span>
+      <span>
+        {{ u.perfiles[0]?.nombre }} {{ u.perfiles[0]?.apellido }}
+      </span>
 
       <span class="acciones">
-        <button (click)="cambiarEstado(s, 'activo')">Aceptar</button>
-        <button (click)="cambiarEstado(s, 'eliminado')">Eliminar</button>
+        <button (click)="cambiarEstado('usuarios', u.idUsuario, 'activo')">Aceptar</button>
+        <button (click)="cambiarEstado('usuarios', u.idUsuario, 'inactivo')">Eliminar</button>
       </span>
     </div>
 
   </div>
 </section>
+
+
+<!--  FIN DE SECCION  -->
+
 
 <section *ngIf="perfilesPendientes.length > 0">
   <h3>Perfiles</h3>
@@ -82,25 +52,34 @@
     </div>
 
     <div class="fila-auditoria perfiles"
-         *ngFor="let p of perfilesPendientes">
+        *ngFor="let p of perfilesPendientes">
 
       <span>{{ p.idPerfil }}</span>
       <span>{{ p.idUsuario }}</span>
       <span>{{ p.nombre }}</span>
       <span>{{ p.apellido }}</span>
       <span>{{ p.dni }}</span>
-      <span>{{ p.categoria }}</span>
+
+      <span>{{ getCategoriaPerfil(p) }}</span>
+
+      <!--
       <span>{{ p.alias }}</span>
-      <span>{{ p.rol }}</span>
+       -->
+
+      <span>{{ getTextoRol(p) }}</span>
 
       <span class="acciones">
-        <button (click)="cambiarEstado(p, 'activo')">Aceptar</button>
-        <button (click)="cambiarEstado(p, 'eliminado')">Eliminar</button>
+        <button (click)="cambiarEstado('perfiles', p.idPerfil, 'activo')">Aceptar</button>
+        <button (click)="cambiarEstado('perfiles', p.idPerfil, 'inactivo')">Eliminar</button>
       </span>
     </div>
 
   </div>
 </section>
+
+
+<!--  FIN DE SECCION  -->
+
 
 <section *ngIf="turnosPendientes.length > 0">
   <h3>Turnos</h3>
@@ -130,42 +109,85 @@
       <span>{{ t.seccionalNombre }}</span>
 
       <span class="acciones">
-        <button (click)="cambiarEstado(t, 'activo')">Aceptar</button>
-        <button (click)="cambiarEstado(t, 'eliminado')">Eliminar</button>
+        <button (click)="cambiarEstado('turnos', t.idTurno, 'activo')">Aceptar</button>
+        <button (click)="cambiarEstado('turnos', t.idTurno, 'inactivo')">Eliminar</button>
       </span>
     </div>
 
   </div>
 </section>
 
-<section *ngIf="usuariosPendientes.length > 0">
-  <h3>Usuarios</h3>
+
+<!--  FIN DE SECCION  -->
+
+
+<section *ngIf="seccionalesPendientes.length > 0">
+  <h3>Seccionales</h3>
 
   <div class="auditorias-container">
 
-    <div class="fila-auditoria encabezado usuarios">
+    <div class="fila-auditoria encabezado seccionales">
       <span>ID</span>
+      <span>Nombre</span>
+      <span>Dirección</span>
+      <span>Ciudad</span>
+      <span>Provincia</span>
+      <span>Teléfono</span>
       <span>Email</span>
-      <span>Último ingreso</span>
-      <span>Nombre completo</span>
       <span>Acciones</span>
     </div>
 
-    <div class="fila-auditoria usuarios"
-         *ngFor="let u of usuariosPendientes">
+    <div class="fila-auditoria seccionales"
+         *ngFor="let s of seccionalesPendientes">
 
-      <span>{{ u.idUsuario }}</span>
-      <span>{{ u.email }}</span>
-      <span>{{ u.ultimoIngreso }}</span>
-      <span>
-        {{ u.perfiles[0]?.nombre }} {{ u.perfiles[0]?.apellido }}
-      </span>
+      <span>{{ s.idSeccional }}</span>
+      <span>{{ s.nombre }}</span>
+      <span>{{ s.direccion }}</span>
+      <span>{{ s.ciudad }}</span>
+      <span>{{ s.provincia }}</span>
+      <span>{{ s.telefono }}</span>
+      <span>{{ s.email }}</span>
 
       <span class="acciones">
-        <button (click)="cambiarEstado(u, 'activo')">Aceptar</button>
-        <button (click)="cambiarEstado(u, 'eliminado')">Eliminar</button>
+        <button (click)="cambiarEstado('seccionales', s.idSeccional, 'activo')">Aceptar</button>
+        <button (click)="cambiarEstado('seccionales', s.idSeccional, 'inactivo')">Eliminar</button>
       </span>
     </div>
 
   </div>
 </section>
+
+
+<!--  FIN DE SECCION  -->
+
+
+<section *ngIf="especialidadesPendientes.length > 0">
+  <h3>Especialidades</h3>
+
+  <div class="auditorias-container">
+
+    <!-- Encabezado -->
+    <div class="fila-auditoria encabezado especialidades">
+      <span>ID</span>
+      <span>Nombre</span>
+      <span>Duración</span>
+      <span>Acciones</span>
+    </div>
+
+    <!-- Filas -->
+    <div class="fila-auditoria especialidades"
+         *ngFor="let e of especialidadesPendientes">
+
+      <span>{{ e.idEspecialidad }}</span>
+      <span>{{ e.nombre }}</span>
+      <span>{{ e.duracion }}</span>
+
+      <span class="acciones">
+        <button (click)="cambiarEstado('especialidades', e.idEspecialidad, 'activo')">Aceptar</button>
+        <button (click)="cambiarEstado('especialidades', e.idEspecialidad, 'inactivo')">Eliminar</button>
+      </span>
+    </div>
+
+  </div>
+</section>
+

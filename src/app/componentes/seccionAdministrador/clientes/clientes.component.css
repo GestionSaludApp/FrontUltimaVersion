@@ -1,0 +1,46 @@
+/* CONTENEDOR */
+.lista-registros {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* FILA BASE */
+.fila-registro,
+.fila.encabezado {
+  display: grid;
+  grid-template-columns: 80px 160px 160px 140px 1fr;
+  align-items: center;
+  column-gap: 15px;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+/* ENCABEZADO */
+.fila.encabezado {
+  background-color: #eaeaea;
+  font-weight: 600;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+/* REGISTRO */
+.fila-registro {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fila-registro:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+.fila-registro span {
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

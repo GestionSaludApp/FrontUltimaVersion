@@ -1,3 +1,59 @@
-<h2>Gestión de Personal</h2>
-<p>Aquí se gestionará el personal.</p>
+<div class="VentanaNivel1">
 
+  <h2>Personal</h2>
+
+  <!-- PROFESIONALES -->
+  <section *ngIf="profesionales.length > 0">
+    <h3>Profesionales</h3>
+
+    <div class="lista-registros">
+
+      <div class="fila encabezado personal">
+        <span>ID</span>
+        <span>Nombre</span>
+        <span>Apellido</span>
+        <span>DNI</span>
+        <span>Especialidad</span>
+      </div>
+
+      <div class="fila-registro personal"
+           *ngFor="let p of profesionales">
+
+        <span>{{ p.idPerfil }}</span>
+        <span>{{ p.nombre }}</span>
+        <span>{{ p.apellido }}</span>
+        <span>{{ p.dni }}</span>
+        <span>{{ p.idEspecialidad }}</span>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMINISTRADORES -->
+  <section *ngIf="administradores.length > 0">
+    <h3>Administradores</h3>
+
+    <div class="lista-registros">
+
+      <div class="fila encabezado personal">
+        <span>ID</span>
+        <span>Nombre</span>
+        <span>Apellido</span>
+        <span>DNI</span>
+        <span>Seccional</span>
+      </div>
+
+      <div class="fila-registro personal"
+           *ngFor="let a of administradores">
+
+        <span>{{ a.idPerfil }}</span>
+        <span>{{ a.nombre }}</span>
+        <span>{{ a.apellido }}</span>
+        <span>{{ a.dni }}</span>
+        <span>{{ a.idSeccional }}</span>
+
+      </div>
+    </div>
+  </section>
+
+</div>

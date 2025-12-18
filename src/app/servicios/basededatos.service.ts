@@ -417,6 +417,29 @@ export class BasededatosService {
     });
   }
 
+  cambiarEstado(
+    tabla: string,
+    id: string | number,
+    nuevoEstado: string,
+    callback: () => void
+  ) {
+
+    const body = {
+      tabla,
+      id,
+      nuevoEstado
+    };
+
+    this.http.post(this.apiUrl + '/cambiarEstado', body).subscribe({
+      next: () => {
+        callback();
+      },
+      error: (err) => {
+        console.error('Error al cambiar estado', err);
+      }
+    });
+  }
+
   buscarPerfilesPorPermiso(callback: (resultado: {
     permiso1: Paciente[];
     permiso2: Profesional[];
@@ -457,5 +480,6 @@ export class BasededatosService {
       }
     });
   }
+
 
 }

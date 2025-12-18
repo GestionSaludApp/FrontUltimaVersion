@@ -107,9 +107,11 @@ export class Profesional extends Perfil<Profesional> {
 }
 
 export class Administrador extends Perfil<Administrador>{
-  
+  idSeccional: number;
+
   constructor(){
     super();
+    this.idSeccional = 0;
     this.rol = 'administrador';
   }
 
