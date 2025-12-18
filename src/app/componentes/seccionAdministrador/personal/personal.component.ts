@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BasededatosService } from '../../../servicios/basededatos.service';
 import { Administrador, Profesional } from '../../../clases/perfil';
 import { CommonModule, NgFor } from '@angular/common';
-
+import { nombresEspecialidades, nombresSeccionales } from '../../../funciones/listas';
 
 @Component({
   selector: 'app-personal',
@@ -21,7 +21,15 @@ export class PersonalComponent implements OnInit {
   ngOnInit(): void {
     this.baseDeDatos.buscarPerfilesPorPermiso((resultado) => {
       this.profesionales = resultado.permiso2;
-      this.administradores = resultado.permiso3;
+      this.administradores = resultado.permiso1;
     });
+  }
+
+  getNombreEspecialidad(index: number):string{
+    return nombresEspecialidades[index];
+  }
+
+  getNombreSeccional(index: number):string{
+    return nombresSeccionales[index];
   }
 }

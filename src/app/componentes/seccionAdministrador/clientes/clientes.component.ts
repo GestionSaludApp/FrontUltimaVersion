@@ -19,7 +19,7 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit(): void {
     this.baseDeDatos.buscarPerfilesPorPermiso((resultado) => {
-      this.pacientes = resultado.permiso1;
+      this.pacientes = resultado.permiso3;
     });
   }
 }

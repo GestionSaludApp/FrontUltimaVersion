@@ -441,22 +441,22 @@ export class BasededatosService {
   }
 
   buscarPerfilesPorPermiso(callback: (resultado: {
-    permiso1: Paciente[];
+    permiso1: Administrador[];
     permiso2: Profesional[];
-    permiso3: Administrador[];
+    permiso3: Paciente[];
   }) => void) {
 
     this.http.post<any>(this.apiUrl + '/buscarPerfilesPorPermiso', {}).subscribe({
       next: (data) => {
 
         const resultado = {
-          permiso1: [] as Paciente[],
+          permiso1: [] as Administrador[],
           permiso2: [] as Profesional[],
-          permiso3: [] as Administrador[]
+          permiso3: [] as Paciente[]
         };
 
         data.permiso1?.forEach((p: any) => {
-          const per = new Paciente();
+          const per = new Administrador();
           per.cargarDatos(p);
           resultado.permiso1.push(per);
         });
@@ -468,7 +468,7 @@ export class BasededatosService {
         });
 
         data.permiso3?.forEach((p: any) => {
-          const per = new Administrador();
+          const per = new Paciente();
           per.cargarDatos(p);
           resultado.permiso3.push(per);
         });
