@@ -1,0 +1,33 @@
+<!-- Auditorías -->
+<div class="VentanaNivel1">
+  <h3>Auditorías registradas</h3>
+
+  <div class="auditorias-container"
+       *ngIf="auditoriasActuales.length > 0; else sinAuditorias">
+
+    <div *ngFor="let a of auditoriasActuales"
+         class="fila-auditoria">
+
+      <span class="aud-fecha">
+        {{ a.fecha }}
+      </span>
+
+      <span class="aud-ip">
+        {{ a.IP }}
+      </span>
+
+      <span class="aud-usuario">
+        {{ a.nombreUsuario }}
+      </span>
+
+      <span class="aud-cambio">
+        {{ a.cambio }}
+      </span>
+
+    </div>
+  </div>
+
+  <ng-template #sinAuditorias>
+    <p>No hay registros de auditoría para mostrar.</p>
+  </ng-template>
+</div>

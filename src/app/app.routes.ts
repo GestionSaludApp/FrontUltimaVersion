@@ -27,6 +27,7 @@ import { GestiononlineComponent } from './componentes/gestiononline/gestiononlin
 import { EstudiosComponent } from './componentes/estudios/estudios.component';
 import { ConocermasComponent } from './componentes/conocermas/conocermas.component';
 import { VerHistoriaClinicaComponent } from './componentes/seccionPaciente/ver-historia-clinica/ver-historia-clinica.component';
+import { AuditoriaComponent } from './componentes/seccionAdministrador/auditoria/auditoria.component';
 
 export const routes: Routes = [
 
@@ -58,6 +59,7 @@ export const routes: Routes = [
     { path: 'personal', component: PersonalComponent },
     { path: 'clientes', component: ClientesComponent },
     { path: 'habilitaciones', component: HabilitacionesComponent },
+    { path: 'auditoria', component: AuditoriaComponent },
 
     //agregados mios
     {path: 'navbar', component: NavbarComponent},

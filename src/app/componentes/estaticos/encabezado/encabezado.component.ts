@@ -74,4 +74,9 @@ export class EncabezadoComponent implements OnInit{
     this.navegar.irHabilitaciones();
   }
 
+  irAuditoria() {
+    this.activeTab = 'auditoria';
+    this.navegar.irAuditoria();
+  }
+
 }

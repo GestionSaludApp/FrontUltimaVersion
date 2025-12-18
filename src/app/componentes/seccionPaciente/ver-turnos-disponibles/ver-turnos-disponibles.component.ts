@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Turno } from '../../../clases/turno';
 import { Disponibilidad } from '../../../clases/disponibilidad';
 import { BasededatosService } from '../../../servicios/basededatos.service';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { dias } from '../../../funciones/fechas';
 import { especialidades, seccionales } from '../../../funciones/listas';
 import { FormsModule } from '@angular/forms';
@@ -16,7 +16,7 @@ import { Especialidad } from '../../../clases/especialidad';
 @Component({
   selector: 'app-ver-turnos-disponibles',
   standalone: true,
-  imports: [NgFor, FormsModule, NgIf, TitleCasePipe],
+  imports: [NgFor, FormsModule, NgIf, TitleCasePipe, CommonModule],
   templateUrl: './ver-turnos-disponibles.component.html',
   styleUrl: './ver-turnos-disponibles.component.css'
 })

@@ -11,6 +11,7 @@ import { Especialidad } from '../clases/especialidad';
 import { Seccional } from '../clases/seccional';
 import { bddURL } from '../credenciales/datos';
 import { Reporte } from '../clases/reporte';
+import { Audicion } from '../clases/audicion';
 
 @Injectable({
   providedIn: 'root'
@@ -326,6 +327,29 @@ export class BasededatosService {
     if (imagen) {body.append('imagen', imagen);}
 
     return this.http.post(this.apiUrl + '/guardarImagen', body);
+  }
+
+  buscarAuditorias(cantidad: number, callback: (auditorias: Audicion[]) => void) {
+
+    const body = { cantidad };
+
+    this.http.post<any[]>(this.apiUrl + '/buscarAuditoria', body).subscribe({
+      next: (lista) => {
+
+        const auditorias: Audicion[] = [];
+
+        lista.forEach(a => {
+          const aud = new Audicion();
+          aud.cargarDatos(a);
+          auditorias.push(aud);
+        });
+
+        callback(auditorias);
+      },
+      error: (err) => {
+        console.error('Error al buscar auditorías', err);
+      }
+    });
   }
 
 

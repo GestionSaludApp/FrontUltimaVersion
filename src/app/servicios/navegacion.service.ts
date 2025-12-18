@@ -33,7 +33,8 @@ export class NavegacionService {
   irPersonal(){this.router.navigate(['/personal']);}
   irClientes(){this.router.navigate(['/clientes']);}
   irHabilitaciones(){this.router.navigate(['/habilitaciones']);}
-
+  irAuditoria(){this.router.navigate(['/auditoria']);}
+  
 }
 
   
