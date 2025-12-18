@@ -1,0 +1,58 @@
+/* Encabezados */
+.fila-auditoria.encabezado {
+  display: grid;
+  background-color: #f1f3f5;
+  font-weight: 700;
+  box-shadow: none;
+  border: 1px solid #ddd;
+}
+
+/* Acciones */
+.acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.acciones button {
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.acciones button:first-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+.acciones button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Columnas por tipo */
+.fila-auditoria.especialidades {
+  grid-template-columns: 80px 1fr 120px 160px;
+}
+
+.fila-auditoria.seccionales {
+  grid-template-columns: 80px 160px 1fr 140px 140px 140px 200px 160px;
+}
+
+.fila-auditoria.perfiles {
+  grid-template-columns: 100px 100px 140px 140px 120px 140px 140px 120px 160px;
+}
+
+.fila-auditoria.turnos {
+  grid-template-columns: 80px 160px 160px 120px 100px 180px 180px 160px;
+}
+
+.fila-auditoria.usuarios {
+  grid-template-columns: 100px 240px 160px 1fr 160px;
+}
+
+/* Fuerza grid en todas las filas */
+.fila-auditoria {
+  display: grid !important;
+}
