@@ -1,5 +1,3 @@
-
-<!--
 <div class="contenedor-historia">
   <h2>Historia clínica</h2>
 
@@ -8,7 +6,7 @@
   </div>
 
   <div *ngIf="perfilActivo">
-    <h3>Paciente: {{ perfilActivo?.nombre }} {{ perfilActivo?.apellido }}</h3>
+    <h3>Paciente: {{ perfilActivo.nombre }} {{ perfilActivo.apellido }}</h3>
 
     <div *ngIf="reportesLocal.length > 0; else sinReportes">
       <ul class="lista-reportes">
@@ -34,4 +32,3 @@
     </ng-template>
   </div>
 </div>
--->

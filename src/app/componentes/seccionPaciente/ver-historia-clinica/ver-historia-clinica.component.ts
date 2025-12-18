@@ -4,11 +4,12 @@ import { UsuarioActivoService } from '../../../servicios/usuario-activo.service'
 import { Perfil } from '../../../clases/perfil';
 import { Subscription } from 'rxjs';
 import { Reporte } from '../../../clases/reporte';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ver-historia-clinica',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './ver-historia-clinica.component.html',
   styleUrl: './ver-historia-clinica.component.css'
 })

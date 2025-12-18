@@ -142,16 +142,19 @@ export class BasededatosService {
   }
 
   buscarReportes(idPaciente: number): Observable<Reporte[]> {
-    return this.http.post<any[]>(this.apiUrl + '/buscarReportesPorPaciente', idPaciente).pipe(
-      map(respuesta => {
-        return respuesta.map(datos => {
-          const reporte = new Reporte();
-          reporte.cargarDatos(datos);
-          return reporte;
-        });
-      })
-    );
+    return this.http
+      .post<any[]>(this.apiUrl + '/buscarReportesPorPaciente', { idPaciente })
+      .pipe(
+        map(lista =>
+          lista.map(datos => {
+            const reporte = new Reporte();
+            reporte.cargarDatos(datos);
+            return reporte;
+          })
+        )
+      );
   }
+
 
   solicitarTurno(turno: Turno): Observable<Turno> {
     return this.http.post<any>(this.apiUrl + '/solicitarTurno', turno).pipe(
@@ -417,6 +420,7 @@ export class BasededatosService {
     });
   }
 
+  //Cambiar estados pendientes
   cambiarEstado(
     tabla: string,
     id: string | number,
@@ -479,6 +483,32 @@ export class BasededatosService {
         console.error('Error al buscar perfiles por permiso', err);
       }
     });
+  }
+
+  buscarReportesPorPaciente(
+    idPaciente: number,
+    callback: (reportes: Reporte[]) => void
+  ) {
+    const body = { idPaciente };
+
+    this.http.post<any[]>(this.apiUrl + '/buscarReportesPorPaciente', body)
+      .subscribe({
+        next: (lista) => {
+
+          const reportes: Reporte[] = [];
+
+          lista.forEach(r => {
+            const rep = new Reporte();
+            rep.cargarDatos(r);
+            reportes.push(rep);
+          });
+
+          callback(reportes);
+        },
+        error: (err) => {
+          console.error('Error al buscar reportes del paciente', err);
+        }
+      });
   }
 
 
