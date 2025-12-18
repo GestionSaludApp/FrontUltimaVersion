@@ -21,4 +21,8 @@ export class Seccional {
         this.telefono= '';
         this.email= '';
     }
+
+    cargarDatos(datos: Partial<Seccional>){
+        Object.assign(this, datos);
+    }
 }

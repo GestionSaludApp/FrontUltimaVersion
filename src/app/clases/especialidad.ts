@@ -9,5 +9,9 @@ export class Especialidad {
     this.nombre = '';
     this.duracion = 0;
     }
+
+    cargarDatos(datos: Partial<Especialidad>) {
+        Object.assign(this, datos);
+    }
 }
 

@@ -44,14 +44,17 @@ import Swal from 'sweetalert2';
 
     // Cuando cargas las seccionales, inicializá también el array de flags
     this.baseDeDatos.buscarSeccionales(() => {
-    this.seccionalesLocal = seccionales.filter(s => s.idSeccional !== 0).map(s => {
-      return { ...s };
-    });
+      this.seccionalesLocal = seccionales
+      .filter(s => s.idSeccional !== 0)
+      .map(s => {
+        const sec = new Seccional();
+        sec.cargarDatos(s);
+        return sec;
+      });
   
     this.mostrarPanelEditar = new Array(this.seccionalesLocal.length).fill(false);
     try { this.cd.detectChanges(); } catch (e) {}
-  });
-
+    });
   }
 
   ngOnDestroy(): void {
@@ -68,14 +71,19 @@ import Swal from 'sweetalert2';
     const abrir = !this.mostrarPanelEditar[index];
     this.mostrarPanelEditar.fill(false);
     this.mostrarPanelEditar[index] = abrir;
-    this.seccionalEditada = { ...this.seccionalesLocal[index] };
+    this.seccionalEditada = new Seccional();
+    this.seccionalEditada.cargarDatos(this.seccionalesLocal[index]);
   }
 
   editarSeccional() {
-    const idx = this.seccionalesLocal.findIndex(s => s.nombre === this.seccionalEditada.nombre);
+    const idx = this.seccionalesLocal.findIndex(
+      s => s.idSeccional === this.seccionalEditada.idSeccional
+    );
+
     if (idx !== -1) {
-      this.seccionalesLocal[idx] = { ...this.seccionalEditada };
+      this.seccionalesLocal[idx].cargarDatos(this.seccionalEditada);
     }
+
     this.cerrarPaneles();
   }
 

@@ -39,11 +39,13 @@ export class EspecialidadesComponent implements OnInit, OnDestroy {
     this.perfilSubscripcion = this.usuarioActivo.perfilObservable$.subscribe(perfil => {
       this.perfilActivo = perfil;
     });
+
     this.baseDeDatos.buscarEspecialidades(() => {
-       this.especialidadesLocal = especialidades.filter(esp => esp.idEspecialidad !== 0).map(esp => {
-        return { ...esp};
-      });
-      
+
+      this.especialidadesLocal = especialidades
+        .filter(e => e.idEspecialidad !== 0)
+        .map(e => Object.assign(new Especialidad(), e));
+
       this.mostrarPanelEditar = this.especialidadesLocal.map(() => false);
     });
   }

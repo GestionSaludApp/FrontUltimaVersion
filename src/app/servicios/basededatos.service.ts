@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, switchMap, tap, throwError } from 'rxjs';
 import { Usuario } from '../clases/usuario';
 import { UsuarioActivoService } from './usuario-activo.service';
-import { Perfil } from '../clases/perfil';
+import { Administrador, Paciente, Perfil, Profesional } from '../clases/perfil';
 import { Disponibilidad } from '../clases/disponibilidad';
 import { Turno } from '../clases/turno';
 import { cargarEspecialidades, cargarSeccionales } from '../funciones/listas';
@@ -352,5 +352,110 @@ export class BasededatosService {
     });
   }
 
+  buscarPendientes(callback: (pendientes: {
+    especialidades: Especialidad[];
+    perfiles: Perfil[];
+    seccionales: Seccional[];
+    turnos: Turno[];
+    usuarioPerfiles: Perfil[];
+    usuarios: Usuario[];
+  }) => void) {
+
+    this.http.post<any>(this.apiUrl + '/buscarPendientes', {}).subscribe({
+      next: (data) => {
+
+        const resultado = {
+          especialidades: [] as Especialidad[],
+          perfiles: [] as Perfil[],
+          seccionales: [] as Seccional[],
+          turnos: [] as Turno[],
+          usuarioPerfiles: [] as Perfil[],
+          usuarios: [] as Usuario[]
+        };
+
+        data.especialidades?.forEach((e: any) => {
+          const esp = new Especialidad();
+          esp.cargarDatos(e);
+          resultado.especialidades.push(esp);
+        });
+
+        data.perfiles?.forEach((p: any) => {
+          const per = new Perfil();
+          per.cargarDatos(p);
+          resultado.perfiles.push(per);
+        });
+
+        data.seccionales?.forEach((s: any) => {
+          const sec = new Seccional();
+          sec.cargarDatos(s);
+          resultado.seccionales.push(sec);
+        });
+
+        data.turnos?.forEach((t: any) => {
+          const tur = new Turno();
+          tur.cargarDatos(t);
+          resultado.turnos.push(tur);
+        });
+
+        data.usuarioPerfiles?.forEach((up: any) => {
+          const uper = new Perfil();
+          uper.cargarDatos(up);
+          resultado.usuarioPerfiles.push(uper);
+        });
+
+        data.usuarios?.forEach((u: any) => {
+          const usu = new Usuario();
+          usu.cargarDatos(u);
+          resultado.usuarios.push(usu);
+        });
+
+        callback(resultado);
+      },
+      error: (err) => {
+        console.error('Error al buscar pendientes', err);
+      }
+    });
+  }
+
+  buscarPerfilesPorPermiso(callback: (resultado: {
+    permiso1: Paciente[];
+    permiso2: Profesional[];
+    permiso3: Administrador[];
+  }) => void) {
+
+    this.http.post<any>(this.apiUrl + '/buscarPerfilesPorPermiso', {}).subscribe({
+      next: (data) => {
+
+        const resultado = {
+          permiso1: [] as Paciente[],
+          permiso2: [] as Profesional[],
+          permiso3: [] as Administrador[]
+        };
+
+        data.permiso1?.forEach((p: any) => {
+          const per = new Paciente();
+          per.cargarDatos(p);
+          resultado.permiso1.push(per);
+        });
+
+        data.permiso2?.forEach((p: any) => {
+          const per = new Profesional();
+          per.cargarDatos(p);
+          resultado.permiso2.push(per);
+        });
+
+        data.permiso3?.forEach((p: any) => {
+          const per = new Administrador();
+          per.cargarDatos(p);
+          resultado.permiso3.push(per);
+        });
+
+        callback(resultado);
+      },
+      error: (err) => {
+        console.error('Error al buscar perfiles por permiso', err);
+      }
+    });
+  }
 
 }

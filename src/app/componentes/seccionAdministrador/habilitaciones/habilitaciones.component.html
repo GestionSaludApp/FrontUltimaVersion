@@ -1,3 +1,115 @@
-<h2>Gestión de Habilitaciones</h2>
-<p>Aquí se mostrarán las Habilitaciones.</p>
+<div class="VentanaNivel1">
 
+  <h2>Habilitaciones pendientes</h2>
+
+  <!-- ESPECIALIDADES -->
+  <section *ngIf="especialidadesPendientes.length > 0">
+    <h3>Especialidades</h3>
+
+    <div class="lista-registros">
+      <div class="fila encabezado">
+        <span>Nombre</span>
+        <span>Acciones</span>
+      </div>
+
+      <div class="fila"
+           *ngFor="let e of especialidadesPendientes">
+        <span>{{ e.nombre }}</span>
+
+        <span class="acciones">
+          <button (click)="cambiarEstado(e, 'activo')">Aceptar</button>
+          <button (click)="cambiarEstado(e, 'eliminado')">Eliminar</button>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIONALES -->
+  <section *ngIf="seccionalesPendientes.length > 0">
+    <h3>Seccionales</h3>
+
+    <div class="lista-registros">
+      <div class="fila encabezado">
+        <span>Nombre</span>
+        <span>Acciones</span>
+      </div>
+
+      <div class="fila"
+           *ngFor="let s of seccionalesPendientes">
+        <span>{{ s.nombre }}</span>
+
+        <span class="acciones">
+          <button (click)="cambiarEstado(s, 'activo')">Aceptar</button>
+          <button (click)="cambiarEstado(s, 'eliminado')">Eliminar</button>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFILES -->
+  <section *ngIf="perfilesPendientes.length > 0">
+    <h3>Perfiles</h3>
+
+    <div class="lista-registros">
+      <div class="fila encabezado">
+        <span>Usuario</span>
+        <span>Acciones</span>
+      </div>
+
+      <div class="fila"
+           *ngFor="let p of perfilesPendientes">
+        <span>{{ p.nombre }}</span>
+
+        <span class="acciones">
+          <button (click)="cambiarEstado(p, 'activo')">Aceptar</button>
+          <button (click)="cambiarEstado(p, 'eliminado')">Eliminar</button>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TURNOS -->
+  <section *ngIf="turnosPendientes.length > 0">
+    <h3>Turnos</h3>
+
+    <div class="lista-registros">
+      <div class="fila encabezado">
+        <span>Detalle</span>
+        <span>Acciones</span>
+      </div>
+
+      <div class="fila"
+           *ngFor="let t of turnosPendientes">
+        <span>{{ t.idTurno }}</span>
+
+        <span class="acciones">
+          <button (click)="cambiarEstado(t, 'activo')">Aceptar</button>
+          <button (click)="cambiarEstado(t, 'eliminado')">Eliminar</button>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- USUARIOS -->
+  <section *ngIf="usuariosPendientes.length > 0">
+    <h3>Usuarios</h3>
+
+    <div class="lista-registros">
+      <div class="fila encabezado">
+        <span>EMail</span>
+        <span>Acciones</span>
+      </div>
+
+      <div class="fila"
+           *ngFor="let u of usuariosPendientes">
+        <span>{{ u.email }}</span>
+
+        <span class="acciones">
+          <button (click)="cambiarEstado(u, 'activo')">Aceptar</button>
+          <button (click)="cambiarEstado(u, 'eliminado')">Eliminar</button>
+        </span>
+      </div>
+    </div>
+  </section>
+
+</div>
