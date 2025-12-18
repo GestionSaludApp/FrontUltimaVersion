@@ -2,6 +2,14 @@
 <div class="VentanaNivel1">
   <h3>Auditorías registradas</h3>
 
+  <!-- Encabezado -->
+  <div class="fila-auditoria encabezado-auditoria">
+    <span>Fecha del registro</span>
+    <span>IP de acceso</span>
+    <span>Nombre del usuario</span>
+    <span>Modificación registrada</span>
+  </div>
+
   <div class="auditorias-container"
        *ngIf="auditoriasActuales.length > 0; else sinAuditorias">
 
