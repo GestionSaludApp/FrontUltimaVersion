@@ -10,6 +10,11 @@
   <!-- Botones solo para pacientes -->
   <ng-container *ngIf="perfilActivo.rol==='paciente'">
     <button 
+      name="botonAgenda" 
+      (click)="irAgenda()" 
+      [class.active]="activeTab==='agenda'">Agenda</button>
+  
+    <button 
       name="botonTurnosDisponibles" 
       (click)="irTurnosDisponibles()" 
       [class.active]="activeTab==='turnosDisponibles'">Turnos</button>

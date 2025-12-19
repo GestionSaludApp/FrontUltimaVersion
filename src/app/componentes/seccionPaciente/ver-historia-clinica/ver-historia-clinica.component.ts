@@ -5,6 +5,7 @@ import { Perfil } from '../../../clases/perfil';
 import { Subscription } from 'rxjs';
 import { Reporte } from '../../../clases/reporte';
 import { CommonModule } from '@angular/common';
+import { prefijoImagen } from '../../../credenciales/datos';
 
 @Component({
   selector: 'app-ver-historia-clinica',
@@ -17,6 +18,7 @@ import { CommonModule } from '@angular/common';
 export class VerHistoriaClinicaComponent implements OnInit, OnDestroy {
   reportesLocal: Reporte[] = [];
   perfilActivo: Perfil | null = null;
+  prefijoImagen = prefijoImagen;
   private perfilSubscripcion: Subscription | null = null;
 
   constructor(
@@ -40,7 +42,7 @@ export class VerHistoriaClinicaComponent implements OnInit, OnDestroy {
     this.baseDeDatos.buscarReportes(idPaciente).subscribe({
       next: (reportes: Reporte[]) => {
         this.reportesLocal = reportes;
-        console.log('Reportes cargados:', this.reportesLocal);
+        //console.log('Reportes cargados:', this.reportesLocal);
       },
       error: (err) => {
         console.error('Error al obtener reportes:', err);
@@ -53,4 +55,9 @@ export class VerHistoriaClinicaComponent implements OnInit, OnDestroy {
       this.perfilSubscripcion.unsubscribe();
     }
   }
+
+  imagen(imagenReporte: string): string{
+    return this.prefijoImagen+imagenReporte;
+  }
+
 }

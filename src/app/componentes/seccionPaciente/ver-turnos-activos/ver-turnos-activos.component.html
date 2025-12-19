@@ -1,10 +1,17 @@
-<p>Turnos Activos</p>
+<!-- Turnos asignados -->
+<div class="VentanaNivel1">
+  <h3>Mis turnos asignados</h3>
+  <div class="turnos-container" *ngIf="turnosActivos.length > 0; else sinTurnosAsignados">
+    <div *ngFor="let turno of turnosActivos" class="tarjeta-turno turno-asignado">
+      <span>{{ turno.especialidad() }}</span>
+      <span>{{ turno.seccional() }}</span>
+      <span>con {{ turno.nombreProfesional }}</span>
+      <span>{{ diasLocal[turno.diaSemana] | titlecase }} {{ verFecha(turno.idTurno) }} {{ leerMinutos(turno.horaInicio) }}</span>
+      <button (click)="cancelarTurno(turno)" class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i> Cancelar Turno</button>
 
-<div *ngFor="let turno of turnosActivos" class="VentanaNivel0">
-  {{ turno.especialidad() }}
-  {{ turno.seccional() }}
-  {{ turno.nombreProfesional }}
-  {{ diasLocal[turno.diaSemana] | titlecase }}
-  {{ leerMinutos(turno.horaInicio) }}
-  <button (click)="cancelarTurno(turno)">Cancelar Turno</button>
+    </div>
+  </div>
+  <ng-template #sinTurnosAsignados>
+    <p>No tenés turnos asignados.</p>
+  </ng-template>
 </div>

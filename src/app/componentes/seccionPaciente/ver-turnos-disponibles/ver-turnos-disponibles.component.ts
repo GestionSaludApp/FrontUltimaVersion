@@ -24,6 +24,10 @@ export class VerTurnosDisponiblesComponent implements OnInit {
   diasLocal = dias;
   seccionalesLocal: Seccional[] = [];
   especialidadesLocal: Especialidad[] = [];
+  profesionalesFrecuentesLocal: {
+    idPerfilProfesional: number;
+    nombre: string;
+  }[] = [];
   
   disponibilidadesActivas: Disponibilidad[] = [];
   turnosDisponibles: Turno[] = [];
@@ -35,9 +39,12 @@ export class VerTurnosDisponiblesComponent implements OnInit {
   filtroDia: number | null = null;
   filtroSeccional: number | null = null;
   filtroEspecialidad: number | null = null;
+  filtroProfesional: number | null = null;
+
   filtroDiaFiltro: number | null = null;
   filtroSeccionalFiltro: number | null = null;
   filtroEspecialidadFiltro: number | null = null;
+  filtroProfesionalFiltro: number | null = null;
 
   constructor(
     private baseDeDatos: BasededatosService, 
@@ -57,8 +64,17 @@ export class VerTurnosDisponiblesComponent implements OnInit {
         },
         error: (err) => console.error('Error cargando turnos activos:', err)
       });
+      this.baseDeDatos.buscarProfesionalesPorPaciente(idPerfil)
+        .subscribe({
+          next: (profesionales) => {
+            this.profesionalesFrecuentesLocal = profesionales;
+            console.log(this.profesionalesFrecuentesLocal);
+          },
+          error: err => {
+            console.error('Error al buscar profesionales', err);
+          }
+      });
     }
-
     this.aplicarFiltros();
   }
 
@@ -76,6 +92,7 @@ export class VerTurnosDisponiblesComponent implements OnInit {
     if (tipo === 'dia') {this.filtroDiaFiltro = dato;}
     if (tipo === 'seccional') {this.filtroSeccionalFiltro = dato;}
     if (tipo === 'especialidad') {this.filtroEspecialidadFiltro = dato;}
+    if (tipo === 'profesional') {this.filtroProfesionalFiltro = dato;}
   }
 
   aplicarFiltros() {
@@ -84,6 +101,7 @@ export class VerTurnosDisponiblesComponent implements OnInit {
     if (this.filtroDia !== null) filtros.diaSemana = this.filtroDiaFiltro;
     if (this.filtroSeccional !== null) filtros.idSeccional = this.filtroSeccionalFiltro;
     if (this.filtroEspecialidad !== null) filtros.idEspecialidad = this.filtroEspecialidadFiltro;
+    if (this.filtroProfesional !== null) filtros.idPerfil = this.filtroProfesionalFiltro;
 
     this.baseDeDatos.buscarTurnos(filtros).subscribe({
       next: (turnos: Turno[]) => {

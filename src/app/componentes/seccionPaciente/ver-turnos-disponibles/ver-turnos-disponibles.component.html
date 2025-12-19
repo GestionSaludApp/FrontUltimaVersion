@@ -1,4 +1,4 @@
-<!-- Turnos asignados -->
+<!-- Turnos asignados
 <div class="VentanaNivel1">
   <h3>Mis turnos asignados</h3>
   <div class="turnos-container" *ngIf="turnosActivos.length > 0; else sinTurnosAsignados">
@@ -15,6 +15,7 @@
     <p>No tenés turnos asignados.</p>
   </ng-template>
 </div>
+-->
 
 <div class="VentanaNivel0">
   <h2>Buscar turnos disponibles</h2>
@@ -45,6 +46,14 @@
       <select id="especialidad" [(ngModel)]="filtroEspecialidad" (ngModelChange)="filtrar('especialidad',filtroEspecialidad)">
         <option [ngValue]="null">-- Todas --</option>
         <option *ngFor="let esp of especialidadesLocal" [ngValue]="esp.idEspecialidad">{{ esp.nombre }}</option>
+      </select>
+    </div>
+
+    <div class="filtro">
+      <label for="profesional">Profesional:</label>
+      <select id="profesional" [(ngModel)]="filtroProfesional" (ngModelChange)="filtrar('profesional',filtroProfesional)">
+        <option [ngValue]="null">-- Todos --</option>
+        <option *ngFor="let prof of profesionalesFrecuentesLocal" [ngValue]="prof.idPerfilProfesional">{{ prof.nombre }}</option>
       </select>
     </div>
   </fieldset>

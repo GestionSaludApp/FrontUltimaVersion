@@ -32,14 +32,26 @@ export class EncabezadoComponent implements OnInit{
     }
   }
   
-  irAyuda(){this.navegar.irAyuda();}
-  irInicio(){this.navegar.irInicio();}
-  irIngreso(){this.navegar.irIngreso();}
-  irError(){this.navegar.irError();}
-  irRegistro(){this.navegar.irRegistro();}
-  irEspecialidades(){this.navegar.irEspecialidades();}
-  irSeccionales(){this.navegar.irSeccionales();}
-  irHistoriaClinica(){this.navegar.irHistoriaClinica();}
+  irAyuda(){
+    this.navegar.irAyuda();}
+  
+  irInicio(){
+    this.navegar.irInicio();}
+  
+  irIngreso(){
+    this.navegar.irIngreso();}
+  
+  irError(){
+    this.navegar.irError();}
+  
+  irRegistro(){
+    this.navegar.irRegistro();}
+  
+  irEspecialidades(){
+    this.navegar.irEspecialidades();}
+
+  irSeccionales(){
+    this.navegar.irSeccionales();}
 
   //subBarra
   activeTab: string = 'datosPersonales';
@@ -49,9 +61,19 @@ export class EncabezadoComponent implements OnInit{
     this.navegar.irDatosPersonales();
   }
 
+  irAgenda() {
+    this.activeTab = 'agenda';
+    this.navegar.irAgenda();
+  }
+
   irTurnosDisponibles() {
     this.activeTab = 'turnosDisponibles';
     this.navegar.irTurnosDisponibles();
+  }
+
+  irHistoriaClinica(){
+    this.activeTab = 'historiaClinica';
+    this.navegar.irHistoriaClinica();
   }
 
   irTurnosAtencion(){

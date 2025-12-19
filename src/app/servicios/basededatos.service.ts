@@ -155,6 +155,15 @@ export class BasededatosService {
       );
   }
 
+  buscarProfesionalesPorPaciente(idPerfilPaciente: number) {
+    return this.http.post<
+      { idPerfilProfesional: number; nombre: string }[]
+    >(
+      this.apiUrl + '/buscarProfesionalesPorPaciente',
+      { idPerfilPaciente }
+    );
+  }
+
 
   solicitarTurno(turno: Turno): Observable<Turno> {
     return this.http.post<any>(this.apiUrl + '/solicitarTurno', turno).pipe(

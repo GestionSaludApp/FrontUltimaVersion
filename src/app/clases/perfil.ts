@@ -37,6 +37,7 @@ export class Perfil<T = Perfil<any>> {
 }
 
 export class Paciente extends Perfil<Paciente>{
+  profesionalesFrecuentes: number[] = [];
   historiaClinica: Reporte[] = [];
   
   constructor(){
