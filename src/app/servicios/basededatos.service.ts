@@ -141,6 +141,21 @@ export class BasededatosService {
     );
   }
 
+  obtenerTurnosActivos(): Observable<Turno[]> {
+    return this.http.post<any[]>(
+      this.apiUrl + '/obtenerTurnosActivos',
+      {} // no recibe parámetros
+    ).pipe(
+      map(respuesta => {
+        return respuesta.map(datos => {
+          const turno = new Turno();
+          turno.cargarDatos(datos);
+          return turno;
+        });
+      })
+    );
+  }
+
   buscarReportes(idPaciente: number): Observable<Reporte[]> {
     return this.http
       .post<any[]>(this.apiUrl + '/buscarReportesPorPaciente', { idPaciente })

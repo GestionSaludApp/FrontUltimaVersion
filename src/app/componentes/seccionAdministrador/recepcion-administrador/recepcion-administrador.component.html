@@ -1,1 +1,20 @@
-<p>recepcion-administrador works!</p>
+<section class="turnos-container">
+  <h2 class="turnos-titulo">Pacientes del día</h2>
+
+  <div class="turnos-grid">
+    <div *ngFor="let turno of turnosActivos" class="turno-card">
+      <div class="turno-info">
+        <p><strong>Paciente:</strong> {{ turno.nombrePaciente }} ({{ turno.idPerfilPaciente }})</p>
+        <p><strong>Especialidad:</strong> {{ turno.especialidad() }}</p>
+        <p><strong>Seccional:</strong> {{ turno.seccional() }}</p>
+        <p>{{ diasLocal[turno.diaSemana] | titlecase }} {{ verFecha(turno.idTurno) }} {{ leerMinutos(turno.horaInicio) }}</p>
+      </div>
+      <button class="btn-habilitar" (click)="habilitarTurno(turno)">
+        Recepcionar
+      </button>
+      <button class="btn-terminar" (click)="terminarTurno(turno)">
+        Terminar
+      </button>
+    </div>
+  </div>
+</section>
