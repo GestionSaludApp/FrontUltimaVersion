@@ -1,10 +1,10 @@
 <section class="turnos-container">
-  <h2 class="turnos-titulo">Agenda activa</h2>
+  <h2 class="turnos-titulo">Pacientes en sala de espera</h2>
 
   <div class="turnos-grid">
     <div *ngFor="let turno of turnosActivos" class="turno-card">
       <div class="turno-info">
-        <p><strong>Paciente:</strong> {{ turno.nombrePaciente }}</p>
+        <p><strong>Paciente:</strong> {{ turno.nombrePaciente }} ({{ turno.idPerfilPaciente }})</p>
         <p><strong>Especialidad:</strong> {{ turno.especialidad() }}</p>
         <p><strong>Seccional:</strong> {{ turno.seccional() }}</p>
         <p>{{ diasLocal[turno.diaSemana] | titlecase }} {{ verFecha(turno.idTurno) }} {{ leerMinutos(turno.horaInicio) }}</p>

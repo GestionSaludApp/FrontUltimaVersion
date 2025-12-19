@@ -26,10 +26,13 @@ export class NavegacionService {
 
   //SECCION PROFESIONAL
   irTurnosAtencion(){this.router.navigate(['/turnosAtencion']);}
+  irRecepcionProfesional(){this.router.navigate(['/recepcionProfesional']);}
+  irHistoriaClinicaProfesional(){this.router.navigate(['/historiaClinicaProfesional']);}
 
   //SECCION ADMINISTRADOR
   irEspecialidades(){this.router.navigate(['/especialidades']);}
   irSeccionales(){this.router.navigate(['/seccionales']);}
+  irRecepcionAdministrador(){this.router.navigate(['/recepcionAdministrador']);}
   irPersonal(){this.router.navigate(['/personal']);}
   irClientes(){this.router.navigate(['/clientes']);}
   irHabilitaciones(){this.router.navigate(['/habilitaciones']);}

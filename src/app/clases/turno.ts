@@ -4,6 +4,7 @@ import { nombresEspecialidades, nombresSeccionales } from "../funciones/listas";
 export class Turno {
     idTurno: string;
     idPaciente: number = 0;
+    idPerfilPaciente: number = 9;
     nombrePaciente: string = '';
     idProfesional: number = 0;
     nombreProfesional: string = '';
@@ -15,6 +16,7 @@ export class Turno {
     horaInicio: number;
     horaFin: number;
     estado: String;
+    situacion: String = '';
     motivoCancelacion?: String;
 
     constructor(){

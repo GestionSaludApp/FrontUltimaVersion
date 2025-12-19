@@ -32,15 +32,30 @@
       name="botonTurnosAtencion" 
       (click)="irTurnosAtencion()" 
       [class.active]="activeTab==='turnosAtencion'">Turnos</button>
+
+    <button 
+      name="botonRecepcionProfesional" 
+      (click)="irRecepcionProfesional()" 
+      [class.active]="activeTab==='recepcionProfesional'">Recepción</button>
+
+    <button 
+      name="botonHistoriaClinicaProfesional" 
+      (click)="irHistoriaClinicaProfesional()" 
+      [class.active]="activeTab==='historiaClinicaProfesional'">Informes clínicos</button>
   </ng-container>
 
   <!-- Botones solo para administradores -->
   <ng-container *ngIf="perfilActivo.rol==='administrador'">
     <button 
+      name="botonRecepcionAdministrador" 
+      (click)="irRecepcionAdministrador()" 
+      [class.active]="activeTab==='recepcionAdministrador'">Recepción</button>
+ 
+    <button 
       name="botonClientes" 
       (click)="irClientes()" 
       [class.active]="activeTab==='clientes'">Clientes</button>
-
+    
     <button 
       name="botonPersonal" 
       (click)="irPersonal()" 

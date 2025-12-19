@@ -4,12 +4,12 @@ import { Subscription } from 'rxjs';
 import { UsuarioActivoService } from '../../../servicios/usuario-activo.service';
 import { Perfil } from '../../../clases/perfil';
 import { NavbarComponent } from "../../../shared/navbar/navbar.component";
-import { NgIf } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-encabezado',
   standalone: true,
-  imports: [NgIf, NavbarComponent],
+  imports: [NgIf, CommonModule, NavbarComponent],
   templateUrl: './encabezado.component.html',
   styleUrl: './encabezado.component.css'
 })
@@ -79,6 +79,21 @@ export class EncabezadoComponent implements OnInit{
   irTurnosAtencion(){
     this.activeTab = 'turnosAtencion';
     this.navegar.irTurnosAtencion();
+  }
+
+  irRecepcionProfesional() {
+    this.activeTab = 'recepcionProfesional';
+    this.navegar.irRecepcionProfesional();  
+  }
+  
+  irHistoriaClinicaProfesional(){
+    this.activeTab = 'historiaClinicaProfesional';
+    this.navegar.irHistoriaClinicaProfesional();
+  }
+
+  irRecepcionAdministrador() {
+    this.activeTab = 'recepcionAdministrador';
+    this.navegar.irRecepcionAdministrador();  
   }
 
   irClientes() {

@@ -1,0 +1,126 @@
+.reportes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.reporte-card {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 24px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.reporte-header {
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 14px;
+}
+
+.reporte-titulo {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  color: #222;
+  font-size: 1.25rem;
+}
+
+.reporte-id {
+  font-size: 1.3rem;
+}
+
+.reporte-fecha {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.reporte-profesional {
+  margin-top: 8px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.reporte-imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.reporte-imagen img {
+  width: 100%;
+  max-height: 65vh;        /* 🔥 ocupa gran parte de la pantalla */
+  object-fit: contain;
+
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.reporte-informe {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #222;
+  white-space: pre-line;
+
+  background-color: #fafafa;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* ==============================
+   Buscador de paciente
+   ============================== */
+.buscador-paciente {
+  display: flex;
+  align-items: center;
+  gap: 12px;              /* espacio entre label, input y botón */
+  margin-bottom: 24px;    /* separa del título */
+  flex-wrap: wrap;
+}
+
+.buscador-paciente label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+  min-width: 90px;        /* ancho mínimo para que el input no se desplace */
+}
+
+.buscador-paciente input {
+  flex: 1;                 /* ocupa todo el espacio disponible */
+  padding: 8px 14px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.buscador-paciente input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+.buscador-paciente button {
+  padding: 9px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.buscador-paciente button:hover {
+  background-color: #0056b3;
+}

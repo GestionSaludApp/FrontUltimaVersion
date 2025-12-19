@@ -164,7 +164,6 @@ export class BasededatosService {
     );
   }
 
-
   solicitarTurno(turno: Turno): Observable<Turno> {
     return this.http.post<any>(this.apiUrl + '/solicitarTurno', turno).pipe(
       map(respuesta => {
@@ -192,6 +191,19 @@ export class BasededatosService {
         console.error('Error al cancelar turno:', error);
         return throwError(() => error);
       })
+    );
+  }
+
+  actualizarSituacionTurno(idTurno: string, nuevaSituacion: string) {
+
+    const body = {
+      idTurno,
+      situacion: nuevaSituacion
+    };
+
+    return this.http.post(
+      this.apiUrl + '/cambiarSituacionTurno',
+      body
     );
   }
 

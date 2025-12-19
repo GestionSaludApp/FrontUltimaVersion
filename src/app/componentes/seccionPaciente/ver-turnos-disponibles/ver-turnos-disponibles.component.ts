@@ -68,7 +68,6 @@ export class VerTurnosDisponiblesComponent implements OnInit {
         .subscribe({
           next: (profesionales) => {
             this.profesionalesFrecuentesLocal = profesionales;
-            console.log(this.profesionalesFrecuentesLocal);
           },
           error: err => {
             console.error('Error al buscar profesionales', err);

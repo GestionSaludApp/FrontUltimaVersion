@@ -6,19 +6,21 @@ import { Subscription } from 'rxjs';
 import { Reporte } from '../../../clases/reporte';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { prefijoImagen } from '../../../credenciales/datos';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-ver-historia-clinica',
+  selector: 'app-historia-paciente',
   standalone: true,
-  imports: [CommonModule, NgIf, NgFor],
-  templateUrl: './ver-historia-clinica.component.html',
-  styleUrl: './ver-historia-clinica.component.css'
+  imports: [CommonModule, NgIf, NgFor, FormsModule],
+  templateUrl: './historia-paciente.component.html',
+  styleUrl: './historia-paciente.component.css'
 })
-
-export class VerHistoriaClinicaComponent implements OnInit, OnDestroy {
+export class HistoriaPacienteComponent implements OnInit, OnDestroy {
   reportesLocal: Reporte[] = [];
   perfilActivo: Perfil | null = null;
   prefijoImagen = prefijoImagen;
+  idPacienteManual: number | null = null;
+
   private perfilSubscripcion: Subscription | null = null;
 
   constructor(
@@ -32,7 +34,7 @@ export class VerHistoriaClinicaComponent implements OnInit, OnDestroy {
       this.perfilActivo = perfil;
 
       // si ya tenemos un idPaciente, pedimos los reportes
-      if (perfil && perfil.idPerfil) {
+      if (perfil && perfil.idPerfil && !this.idPacienteManual) {
         this.cargarReportes(perfil.idPerfil);
       }
     });
@@ -58,6 +60,13 @@ export class VerHistoriaClinicaComponent implements OnInit, OnDestroy {
 
   imagen(imagenReporte: string): string{
     return this.prefijoImagen+imagenReporte;
+  }
+
+  buscarPacienteManual(): void {
+    if (!this.idPacienteManual) {
+      return;
+    }
+    this.cargarReportes(this.idPacienteManual);
   }
 
 }

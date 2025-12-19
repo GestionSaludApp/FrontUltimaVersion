@@ -8,13 +8,13 @@ import { BasededatosService } from '../../../servicios/basededatos.service';
 import { NuevoReporteComponent } from "../../nuevosElementos/nuevo-reporte/nuevo-reporte.component";
 
 @Component({
-  selector: 'app-atencion',
+  selector: 'app-recepcion-profesional',
   standalone: true,
   imports: [CommonModule, NgFor, NuevoReporteComponent],
-  templateUrl: './atencion.component.html',
-  styleUrl: './atencion.component.css'
+  templateUrl: './recepcion-profesional.component.html',
+  styleUrl: './recepcion-profesional.component.css'
 })
-export class AtencionComponent implements OnInit{
+export class RecepcionProfesionalComponent implements OnInit{
   turnosActivos: Turno[] = [];
   turnoSeleccionado: Turno | null = null;
   diasLocal = dias;
@@ -32,7 +32,7 @@ export class AtencionComponent implements OnInit{
     });
     this.baseDeDatos.buscarSeccionales(() => {
       this.seccionalesLocal = seccionales.slice(1);
-    });    
+    });
   }
 
   buscarTurnos(){
@@ -42,12 +42,14 @@ export class AtencionComponent implements OnInit{
       filtros.idPerfil = this.usuarioActual.perfil.idPerfil;
       this.baseDeDatos.buscarTurnosActivos(filtros).subscribe({
         next: (turnos: Turno[]) => {
-          this.turnosActivos = turnos;
+          this.turnosActivos = turnos.filter(
+            t => (t as any).situacion === 'esperando'
+          );
         },
         error: (error) => {
           console.error('Error al cargar turnos:', error);
         }
-      });  
+      }); 
     }
   }
 

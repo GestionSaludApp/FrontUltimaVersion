@@ -28,6 +28,9 @@ import { EstudiosComponent } from './componentes/estudios/estudios.component';
 import { ConocermasComponent } from './componentes/conocermas/conocermas.component';
 import { VerHistoriaClinicaComponent } from './componentes/seccionPaciente/ver-historia-clinica/ver-historia-clinica.component';
 import { AuditoriaComponent } from './componentes/seccionAdministrador/auditoria/auditoria.component';
+import { RecepcionProfesionalComponent } from './componentes/seccionProfesional/recepcion-profesional/recepcion-profesional.component';
+import { RecepcionAdministradorComponent } from './componentes/seccionAdministrador/recepcion-administrador/recepcion-administrador.component';
+import { HistoriaPacienteComponent } from './componentes/seccionProfesional/historia-paciente/historia-paciente.component';
 
 export const routes: Routes = [
 
@@ -52,10 +55,13 @@ export const routes: Routes = [
 
     //seccion profesional
     { path: 'turnosAtencion', component: AtencionComponent },
+    { path: 'recepcionProfesional', component: RecepcionProfesionalComponent },
+    { path: 'historiaClinicaProfesional', component: HistoriaPacienteComponent },
 
     //seccion administrador
     { path: 'especialidades', component: EspecialidadesComponent },
     { path: 'seccionales', component: SeccionalesComponent },
+    { path: 'recepcionAdministrador', component: RecepcionAdministradorComponent },
     { path: 'personal', component: PersonalComponent },
     { path: 'clientes', component: ClientesComponent },
     { path: 'habilitaciones', component: HabilitacionesComponent },
