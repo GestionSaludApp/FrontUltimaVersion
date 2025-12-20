@@ -456,7 +456,19 @@ export class BasededatosService {
     });
   }
 
-  //Cambiar estados pendientes
+  enviarConsulta(nombre: string, email: string, mensaje: string) {
+    const body = {
+      nombre,
+      email,
+      mensaje
+    };
+
+    return this.http.post(
+      this.apiUrl + '/enviarConsulta',
+      body
+    );
+  }
+
   cambiarEstado(
     tabla: string,
     id: string | number,
