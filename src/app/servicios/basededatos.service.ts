@@ -559,5 +559,11 @@ export class BasededatosService {
       });
   }
 
+  reiniciarPassword(email: string): Observable<any> {
+    return this.http.post(
+      this.apiUrl + '/reiniciarPassword',
+      { email }
+    );
+  }
 
 }
