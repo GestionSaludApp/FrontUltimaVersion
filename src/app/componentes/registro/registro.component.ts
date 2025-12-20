@@ -132,6 +132,24 @@ export class RegistroComponent {
       verificado = false;
     }
 
+    //Validar que la contraseña no contenga 3 o más caracteres consecutivos del email
+    const emailLower = this.emailIngresado.toLowerCase();
+    const passwordLower = this.passwordIngresado.toLowerCase();
+    let contieneSecuenciaEmail = false;
+    for (let i = 0; i <= emailLower.length - 3; i++) {
+      const subcadena = emailLower.substring(i, i + 3);
+
+      if (passwordLower.includes(subcadena)) {
+        contieneSecuenciaEmail = true;
+        break;
+      }
+    }
+
+    if (contieneSecuenciaEmail) {
+      textoAdvertencia = 'La contraseña no puede contener secuencias de 3 o más caracteres consecutivos de tu email.';
+      verificado = false;
+    }
+
     if(this.passwordIngresado != this.passwordConfirmacionIngresado) {
       textoAdvertenciaConfirmacion = 'Las contraseñas no coinciden.';
       verificado = false;

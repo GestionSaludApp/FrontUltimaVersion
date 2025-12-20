@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { BasededatosService } from '../../servicios/basededatos.service';
+import { NavegacionService } from '../../servicios/navegacion.service';
 
 @Component({
   selector: 'app-olvidecontra',
@@ -21,7 +22,7 @@ export class OlvidecontraComponent {
   enviando = false;
   codigoEnviado = false; // 👈 NUEVO ESTADO
 
-  constructor(private baseDeDatos: BasededatosService) {}
+  constructor(private baseDeDatos: BasededatosService, private navegar: NavegacionService) {}
 
   enviarCodigo() {
     if (!this.email || this.enviando) return;
@@ -60,6 +61,39 @@ export class OlvidecontraComponent {
   cambiarPassword() {
     if (!this.codigo || !this.nuevaPassword || !this.confirmarPassword) return;
 
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/;
+    if (!passwordRegex.test(this.nuevaPassword)) {
+      Swal.fire({
+        icon: 'warning',
+        title: '⚠️ Atención',
+        text: 'La contraseña debe tener al menos 8 caracteres, incluir al menos una mayúscula, una minúscula, un número y un carácter especial.'
+      });
+      return;
+    }
+
+    const emailLower = this.email.toLowerCase();
+    const passwordLower = this.nuevaPassword.toLowerCase();
+
+    let contieneSecuenciaEmail = false;
+
+    for (let i = 0; i <= emailLower.length - 3; i++) {
+      const subcadena = emailLower.substring(i, i + 3);
+
+      if (passwordLower.includes(subcadena)) {
+        contieneSecuenciaEmail = true;
+        break;
+      }
+    }
+
+    if (contieneSecuenciaEmail) {
+      Swal.fire({
+        icon: 'warning',
+        title: '⚠️ Atención',
+        text: 'La contraseña no puede contener secuencias de 3 o más caracteres consecutivos de tu email.'
+      });
+      return;
+    }
+
     if (this.nuevaPassword !== this.confirmarPassword) {
       Swal.fire({
         icon: 'warning',
@@ -69,13 +103,44 @@ export class OlvidecontraComponent {
       return;
     }
 
-    // 👉 acá luego llamaremos a la API cambiarPassword
-    console.log('Cambiar password', {
-      email: this.email,
-      codigo: this.codigo,
-      nuevaPassword: this.nuevaPassword
-    });
+    this.enviando = true;
+
+    this.baseDeDatos
+      .cambiarPassword(this.email, this.codigo, this.nuevaPassword)
+      .subscribe({
+        next: () => {
+          Swal.fire({
+            icon: 'success',
+            title: '✅ Contraseña modificada',
+            text: 'Tu contraseña fue actualizada correctamente.',
+            confirmButtonText: 'Ir al inicio',
+            confirmButtonColor: '#0d6efd'
+          }).then(() => {
+            this.irInicio();
+          });
+
+          // reset total del formulario
+          this.email = '';
+          this.codigo = '';
+          this.nuevaPassword = '';
+          this.confirmarPassword = '';
+          this.codigoEnviado = false;
+          this.enviando = false;
+        },
+        error: (err) => {
+          console.error('Error cambiando contraseña', err);
+
+          Swal.fire({
+            icon: 'error',
+            title: '❌ Error',
+            text: err?.error?.error || 'No se pudo cambiar la contraseña. Verificá el código.'
+          });
+
+          this.enviando = false;
+        }
+      });
   }
 
+  irInicio() {this.navegar.irInicio();}
 }
 

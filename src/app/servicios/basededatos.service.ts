@@ -566,4 +566,12 @@ export class BasededatosService {
     );
   }
 
+  cambiarPassword(email: string, codigo: string, nuevaPassword: string) {
+    return this.http.post(`${this.apiUrl}/cambiarPassword`, {
+      email,
+      codigo,
+      nuevaPassword
+    });
+  }
+
 }
