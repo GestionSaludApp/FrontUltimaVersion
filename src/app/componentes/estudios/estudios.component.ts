@@ -113,6 +113,7 @@ export class EstudiosComponent {
       diaSemana: this.obtenerDiaSemana(this.fechaSeleccionada),
       horaInicio: this.horaAMinutos(this.horaSeleccionada),
       horaFin: this.horaAMinutos(this.horaSeleccionada) +60,
+      estado: 'pendiente'
     };
     nuevoTurno.cargarDatos(datosTurno);
     this.solicitarTurno(nuevoTurno);
