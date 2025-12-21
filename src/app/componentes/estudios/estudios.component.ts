@@ -105,7 +105,7 @@ export class EstudiosComponent {
 
     const nuevoTurno = new Turno();
     const datosTurno: Partial<Turno> = {
-      idTurno: this.estudioCodigo+'p'+this.usuarioActual.perfil?.idPerfil+'d'+this.formatearFecha(this.fechaSeleccionada)+'h'+this.horaAMinutos(this.horaSeleccionada),
+      idTurno: 's0p'+this.usuarioActual.perfil?.idPerfil+'e'+this.estudioCodigo+'d'+this.formatearFecha(this.fechaSeleccionada)+'h'+this.horaAMinutos(this.horaSeleccionada),
       idPaciente: this.usuarioActual.perfil?.idPerfil,
       idPerfilPaciente: this.usuarioActual.perfil?.idPerfil,
       idEspecialidad: 0,
