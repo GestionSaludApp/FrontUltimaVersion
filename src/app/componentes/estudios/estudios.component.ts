@@ -48,13 +48,13 @@ export class EstudiosComponent {
         { title: 'No disponible', date: '2025-09-04', color: 'red' }
       ];
     } else if (estudio === 'Rayos X') {
-      this.estudioCodigo = 'Ray';
+      this.estudioCodigo = 'Rx';
       this.calendarOptions.events = [
         { title: 'Disponible', date: '2025-09-05', color: 'green' },
         { title: 'No disponible', date: '2025-09-06', color: 'red' }
       ];
     } else if (estudio === 'Tomografía') {
-      this.estudioCodigo = 'Tom';
+      this.estudioCodigo = 'Tmg';
       this.calendarOptions.events = [
         { title: 'Disponible', date: '2025-09-05', color: 'green' },
         { title: 'No disponible', date: '2025-09-06', color: 'red' }
@@ -105,12 +105,14 @@ export class EstudiosComponent {
 
     const nuevoTurno = new Turno();
     const datosTurno: Partial<Turno> = {
-      idTurno: 's0p'+this.usuarioActual.perfil?.idPerfil+'e'+this.estudioCodigo+'d'+this.formatearFecha(this.fechaSeleccionada)+'h'+this.horaAMinutos(this.horaSeleccionada),
+      idTurno: this.estudioCodigo+'p'+this.usuarioActual.perfil?.idPerfil+'d'+this.formatearFecha(this.fechaSeleccionada)+'h'+this.horaAMinutos(this.horaSeleccionada),
       idPaciente: this.usuarioActual.perfil?.idPerfil,
       idPerfilPaciente: this.usuarioActual.perfil?.idPerfil,
       idEspecialidad: 0,
+      idProfesional: 0,
       diaSemana: this.obtenerDiaSemana(this.fechaSeleccionada),
-      horaInicio: this.horaAMinutos(this.horaSeleccionada)
+      horaInicio: this.horaAMinutos(this.horaSeleccionada),
+      horaFin: this.horaAMinutos(this.horaSeleccionada) +60,
     };
     nuevoTurno.cargarDatos(datosTurno);
     this.solicitarTurno(nuevoTurno);
